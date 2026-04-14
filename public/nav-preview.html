@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navigation Preview — BienEtre</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f1f5f9; color: #1e293b; }
+
+    h1 { text-align: center; padding: 32px 16px 8px; font-size: 1.4rem; color: #0f172a; }
+    .subtitle { text-align: center; color: #64748b; font-size: 0.9rem; padding-bottom: 32px; }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+
+    .option-block {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    .option-label {
+      padding: 18px 20px 12px;
+      font-weight: 900;
+      font-size: 1rem;
+      color: #0f172a;
+    }
+    .option-label span {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #64748b;
+      display: block;
+      margin-top: 3px;
+    }
+
+    /* ── Phone frame ── */
+    .phone {
+      margin: 0 20px 20px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid #e2e8f0;
+      position: relative;
+      background: #f8fafc;
+      height: 420px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Fake app header */
+    .app-header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #0c4a6e 100%);
+      padding: 16px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .app-header .bone { font-size: 1.4rem; }
+    .app-header h2 { color: #fbbf24; font-size: 0.9rem; font-weight: 900; margin-top: 4px; }
+    .app-header p { color: #94a3b8; font-size: 0.68rem; margin-top: 2px; }
+
+    /* Fake content area */
+    .app-content {
+      flex: 1;
+      overflow: hidden;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .fake-card {
+      background: white;
+      border-radius: 10px;
+      padding: 12px 14px;
+      border-left: 4px solid #06b6d4;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .fake-card .fc-title { font-size: 0.78rem; font-weight: 800; color: #1e293b; margin-bottom: 4px; }
+    .fake-card .fc-line { height: 7px; background: #e2e8f0; border-radius: 4px; margin-bottom: 5px; }
+    .fake-card .fc-line.short { width: 60%; }
+    .fake-card .fc-line.mid { width: 80%; }
+
+    /* ════════════════════════════════
+       OPTION A — Bottom nav icon only
+    ═════════════════════════════════ */
+    .bottom-nav {
+      background: white;
+      border-top: 2px solid #e2e8f0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 6px 0 8px;
+      flex-shrink: 0;
+    }
+    .bottom-nav button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      transition: background 0.15s;
+    }
+    .bottom-nav button:hover { background: #f1f5f9; }
+    .bottom-nav button .icon { font-size: 1.4rem; line-height: 1; }
+    .bottom-nav button .nav-label { font-size: 0.58rem; font-weight: 700; color: #94a3b8; }
+    .bottom-nav button.active .nav-label { color: #3b82f6; }
+    .bottom-nav button.active .icon { filter: drop-shadow(0 0 4px #3b82f680); }
+    .bottom-nav button .active-dot {
+      width: 4px; height: 4px;
+      background: #3b82f6;
+      border-radius: 50%;
+      margin-top: 1px;
+    }
+
+    /* ════════════════════════════════
+       OPTION B — 2-row wrapping tabs
+    ═════════════════════════════════ */
+    .top-nav-wrap {
+      background: white;
+      border-bottom: 2px solid #e2e8f0;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 4px 6px 0;
+      flex-shrink: 0;
+    }
+    .top-nav-wrap button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #64748b;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      transition: all 0.15s;
+    }
+    .top-nav-wrap button:hover { color: #1e293b; }
+    .top-nav-wrap button.active {
+      color: #3b82f6;
+      border-bottom: 3px solid #3b82f6;
+    }
+
+    /* ════════════════════════════════
+       OPTION C — Pill selector (scrollable but styled)
+    ═════════════════════════════════ */
+    .pill-nav {
+      background: white;
+      border-bottom: 2px solid #e2e8f0;
+      padding: 10px 10px 0;
+      flex-shrink: 0;
+    }
+    .pill-nav-inner {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+    }
+    .pill-nav-inner::-webkit-scrollbar { display: none; }
+    .pill-nav button {
+      background: #f1f5f9;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 50px;
+      cursor: pointer;
+      padding: 6px 12px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #64748b;
+      white-space: nowrap;
+      transition: all 0.15s;
+      flex-shrink: 0;
+    }
+    .pill-nav button:hover { background: #e2e8f0; }
+    .pill-nav button.active {
+      background: #1e3a5f;
+      color: white;
+      border-color: #1e3a5f;
+    }
+
+    /* ── Badge ── */
+    .badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 50px;
+      margin-bottom: 12px;
+    }
+    .badge-a { background: #dcfce7; color: #15803d; }
+    .badge-b { background: #fef9c3; color: #854d0e; }
+    .badge-c { background: #e0f2fe; color: #075985; }
+
+    /* Pros/cons */
+    .pros-cons { padding: 0 20px 20px; }
+    .pros-cons ul { list-style: none; font-size: 0.8rem; line-height: 1.7; }
+    .pros-cons li::before { margin-right: 6px; }
+    .pro::before { content: "✅"; }
+    .con::before { content: "⚠️"; }
+    .pros-cons .section-title { font-size: 0.7rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin: 10px 0 4px; }
+  </style>
+</head>
+<body>
+
+<h1>Navigation — 3 options pour BienEtre</h1>
+<p class="subtitle">Cliquez sur les onglets pour les tester interactivement</p>
+
+<div class="options-grid">
+
+  <!-- ═══════════════════════════════════════
+       OPTION A — Bottom navigation bar
+  ════════════════════════════════════════ -->
+  <div class="option-block">
+    <div class="option-label">
+      Option A — Barre de navigation en bas
+      <span>Icône + label court · Fixe en bas de l'écran</span>
+    </div>
+    <div style="padding: 0 20px 12px;">
+      <span class="badge badge-a">⭐ Recommandé</span>
+    </div>
+
+    <div class="phone">
+      <div class="app-header">
+        <div class="bone">🦴</div>
+        <h2>Plan de Récupération</h2>
+        <p>Discopathie L4-L5 / L5-S1 · 12 semaines</p>
+      </div>
+      <div class="app-content">
+        <div class="fake-card">
+          <div class="fc-title">📅 Semaine 1 — Phase 1</div>
+          <div class="fc-line mid"></div>
+          <div class="fc-line short"></div>
+        </div>
+        <div class="fake-card" style="border-left-color: #f59e0b;">
+          <div class="fc-title">💪 Lundi — Exercices matin</div>
+          <div class="fc-line"></div>
+          <div class="fc-line mid"></div>
+        </div>
+        <div class="fake-card" style="border-left-color: #10b981;">
+          <div class="fc-title">🚶 Marche douce 20 min</div>
+          <div class="fc-line short"></div>
+        </div>
+      </div>
+      <div class="bottom-nav" id="nav-a">
+        <button class="active" onclick="selectA(this)">
+          <span class="icon">📅</span>
+          <span class="nav-label">Programme</span>
+          <div class="active-dot"></div>
+        </button>
+        <button onclick="selectA(this)">
+          <span class="icon">🏋️</span>
+          <span class="nav-label">Exercices</span>
+        </button>
+        <button onclick="selectA(this)">
+          <span class="icon">🚶</span>
+          <span class="nav-label">Marche</span>
+        </button>
+        <button onclick="selectA(this)">
+          <span class="icon">🥗</span>
+          <span class="nav-label">Nutrition</span>
+        </button>
+        <button onclick="selectA(this)">
+          <span class="icon">💊</span>
+          <span class="nav-label">Suppléments</span>
+        </button>
+        <button onclick="selectA(this)">
+          <span class="icon">💧</span>
+          <span class="nav-label">Hydrat.</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="pros-cons">
+      <div class="section-title">Points forts</div>
+      <ul>
+        <li class="pro">Tous les onglets visibles d'un coup</li>
+        <li class="pro">Standard mobile (Instagram, Maps…)</li>
+        <li class="pro">Pouce facilement accessible en bas</li>
+        <li class="pro">Aucun scroll nécessaire</li>
+      </ul>
+      <div class="section-title">Points faibles</div>
+      <ul>
+        <li class="con">Prend 60px en bas de l'écran</li>
+        <li class="con">Labels courts (peuvent être coupés)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       OPTION B — 2-row wrapping tabs
+  ════════════════════════════════════════ -->
+  <div class="option-block">
+    <div class="option-label">
+      Option B — Onglets sur 2 lignes
+      <span>Retour à la ligne automatique · En haut</span>
+    </div>
+    <div style="padding: 0 20px 12px;">
+      <span class="badge badge-b">Simple à implémenter</span>
+    </div>
+
+    <div class="phone">
+      <div class="app-header">
+        <div class="bone">🦴</div>
+        <h2>Plan de Récupération</h2>
+        <p>Discopathie L4-L5 / L5-S1 · 12 semaines</p>
+      </div>
+      <div class="top-nav-wrap" id="nav-b">
+        <button class="active" onclick="selectB(this)">📅 Programme</button>
+        <button onclick="selectB(this)">🏋️ Exercices</button>
+        <button onclick="selectB(this)">🚶 Marche</button>
+        <button onclick="selectB(this)">🥗 Nutrition</button>
+        <button onclick="selectB(this)">💊 Compléments</button>
+        <button onclick="selectB(this)">💧 Hydratation</button>
+      </div>
+      <div class="app-content">
+        <div class="fake-card">
+          <div class="fc-title">📅 Semaine 1 — Phase 1</div>
+          <div class="fc-line mid"></div>
+          <div class="fc-line short"></div>
+        </div>
+        <div class="fake-card" style="border-left-color: #f59e0b;">
+          <div class="fc-title">💪 Lundi — Exercices matin</div>
+          <div class="fc-line"></div>
+          <div class="fc-line mid"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pros-cons">
+      <div class="section-title">Points forts</div>
+      <ul>
+        <li class="pro">Tous les onglets visibles sans scroll</li>
+        <li class="pro">Changement minimal du code (1 ligne)</li>
+        <li class="pro">Familier — ressemble aux onglets web</li>
+      </ul>
+      <div class="section-title">Points faibles</div>
+      <ul>
+        <li class="con">Prend beaucoup de place en haut</li>
+        <li class="con">Moins "application mobile"</li>
+        <li class="con">2e ligne peut paraître secondaire</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       OPTION C — Pill / chip nav
+  ════════════════════════════════════════ -->
+  <div class="option-block">
+    <div class="option-label">
+      Option C — Pastilles scrollables stylisées
+      <span>Chips arrondies · Scroll discret · En haut</span>
+    </div>
+    <div style="padding: 0 20px 12px;">
+      <span class="badge badge-c">Look moderne</span>
+    </div>
+
+    <div class="phone">
+      <div class="app-header">
+        <div class="bone">🦴</div>
+        <h2>Plan de Récupération</h2>
+        <p>Discopathie L4-L5 / L5-S1 · 12 semaines</p>
+      </div>
+      <div class="pill-nav">
+        <div class="pill-nav-inner" id="nav-c">
+          <button class="active" onclick="selectC(this)">📅 Programme</button>
+          <button onclick="selectC(this)">🏋️ Exercices</button>
+          <button onclick="selectC(this)">🚶 Marche & Course</button>
+          <button onclick="selectC(this)">🥗 Nutrition</button>
+          <button onclick="selectC(this)">💊 Compléments</button>
+          <button onclick="selectC(this)">💧 Hydratation</button>
+        </div>
+      </div>
+      <div class="app-content">
+        <div class="fake-card">
+          <div class="fc-title">📅 Semaine 1 — Phase 1</div>
+          <div class="fc-line mid"></div>
+          <div class="fc-line short"></div>
+        </div>
+        <div class="fake-card" style="border-left-color: #f59e0b;">
+          <div class="fc-title">💪 Lundi — Exercices matin</div>
+          <div class="fc-line"></div>
+          <div class="fc-line mid"></div>
+        </div>
+        <div class="fake-card" style="border-left-color: #10b981;">
+          <div class="fc-title">🚶 Marche douce 20 min</div>
+          <div class="fc-line short"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pros-cons">
+      <div class="section-title">Points forts</div>
+      <ul>
+        <li class="pro">Design moderne et élégant</li>
+        <li class="pro">Scroll intuitif (indicateur de débordement)</li>
+        <li class="pro">Labels complets conservés</li>
+        <li class="pro">Peu d'espace vertical utilisé</li>
+      </ul>
+      <div class="section-title">Points faibles</div>
+      <ul>
+        <li class="con">Scroll toujours nécessaire (mais évident)</li>
+        <li class="con">Onglets cachés non immédiatement visibles</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function selectA(btn) {
+    document.querySelectorAll('#nav-a button').forEach(b => {
+      b.classList.remove('active');
+      b.querySelector('.active-dot') && (b.querySelector('.active-dot').style.display = 'none');
+    });
+    btn.classList.add('active');
+    btn.querySelector('.active-dot') && (btn.querySelector('.active-dot').style.display = 'block');
+  }
+  function selectB(btn) {
+    document.querySelectorAll('#nav-b button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  function selectC(btn) {
+    document.querySelectorAll('#nav-c button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+</script>
+
+</body>
+</html>
