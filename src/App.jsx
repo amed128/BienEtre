@@ -126,13 +126,12 @@ const [phase, setPhase] = useState(1);
 const [openEx, setOpenEx] = useState(null);
 const [showWelcome, setShowWelcome] = useState(() => localStorage.getItem("bienetre_welcomed") !== "1");
 const [activityTab, setActivityTab] = useState("exercices");
+const [alimentationTab, setAlimentationTab] = useState("nutrition");
 
 const tabs = [
 { id: "programme", label: "📅 Programme" },
 { id: "activites", label: "🏃 Activités" },
-{ id: "nutrition", label: "🥗 Nutrition" },
-{ id: "supplements", label: "💊 Compléments" },
-{ id: "hydration", label: "💧 Hydratation" },
+{ id: "alimentation", label: "🥗 Alimentation" },
 ];
 
 return (
@@ -516,9 +515,24 @@ return (
       </div>
     )}
 
-    {/* ════════════════ NUTRITION ════════════════ */}
-    {tab === "nutrition" && (
+    {/* ════════════════ ALIMENTATION ════════════════ */}
+    {tab === "alimentation" && (
       <div className="fade">
+
+        {/* Sub-tabs */}
+        <div style={{ display: "flex", background: "white", borderRadius: "14px", padding: "4px", gap: "4px", marginBottom: "22px", boxShadow: "0 2px 10px rgba(0,0,0,0.07)" }}>
+          {[{ id: "nutrition", label: "🥗 Nutrition" }, { id: "supplements", label: "💊 Compléments" }, { id: "hydration", label: "💧 Hydratation" }].map(t => (
+            <button key={t.id} className="btn" onClick={() => setAlimentationTab(t.id)}
+              style={{ flex: 1, padding: "11px 8px", borderRadius: "10px", fontSize: "0.78rem", fontWeight: 800,
+                background: alimentationTab === t.id ? "#1e3a5f" : "transparent",
+                color: alimentationTab === t.id ? "white" : "#64748b" }}>
+              {t.label}
+            </button>
+          ))}
+        </div>
+
+        {alimentationTab === "nutrition" && (
+        <div className="fade">
         <div className="card" style={{ padding: "16px 20px", marginBottom: "18px", background: "#f0fdf4", borderLeft: "4px solid #10b981" }}>
           <div style={{ fontWeight: 800, color: "#059669", fontSize: "0.88rem" }}>🥗 Objectif : alimentation anti-inflammatoire, pro-collagène et hydratante. Vos disques sont composés à 80% d'eau et de collagène — ce que vous mangez impacte directement leur récupération.</div>
         </div>
@@ -578,12 +592,11 @@ return (
             ))}
           </div>
         </div>
-      </div>
-    )}
+        </div>
+        )}
 
-    {/* ════════════════ COMPLÉMENTS ════════════════ */}
-    {tab === "supplements" && (
-      <div className="fade">
+        {alimentationTab === "supplements" && (
+        <div className="fade">
         <div className="card" style={{ padding: "16px 20px", marginBottom: "18px", background: "#fffbeb", borderLeft: "4px solid #f59e0b" }}>
           <div style={{ fontWeight: 800, color: "#92400e", fontSize: "0.87rem" }}>💊 Consultez votre médecin avant de commencer tout complément. Ce programme est basé sur les données disponibles concernant la santé discale et le cartilage.</div>
         </div>
@@ -640,11 +653,10 @@ return (
             ))}
           </div>
         </div>
-      </div>
-    )}
+        </div>
+        )}
 
-    {/* ════════════════ HYDRATATION ════════════════ */}
-    {tab === "hydration" && (
+        {alimentationTab === "hydration" && (
       <div className="fade">
         <div className="card" style={{ padding: "16px 20px", marginBottom: "18px", background: "#eff6ff", borderLeft: "4px solid #3b82f6" }}>
           <div style={{ fontWeight: 800, color: "#1d4ed8", fontSize: "0.88rem" }}>💧 Objectif : 2,3 litres par jour minimum. Le noyau de vos disques intervertébraux est composé à 80% d'eau. La déshydratation accélère directement la dégénérescence discale.</div>
@@ -709,6 +721,9 @@ return (
             ))}
           </div>
         </div>
+        </div>
+        )}
+
       </div>
     )}
 
