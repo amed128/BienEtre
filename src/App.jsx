@@ -136,7 +136,19 @@ const tabs = [
 
 return (
 <div style={{ fontFamily: "system-ui, sans-serif", background: "#f1f5f9", minHeight: "100vh", color: "#1e293b" }}>
-<style>{`* { box-sizing: border-box; margin: 0; padding: 0; } .card { background: white; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); } .btn { cursor: pointer; border: none; font-family: inherit; transition: all 0.18s; } .btn:hover { filter: brightness(1.08); transform: translateY(-1px); } .fade { animation: fadeUp 0.3s ease-out; } @keyframes fadeUp { from { opacity:0; transform:translateY(10px) } to { opacity:1; transform:translateY(0) } } /* Stick figure animations */ @keyframes pirAnim { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(-18deg) translateX(4px)} } @keyframes glowAnim { 0%,100%{opacity:0.15} 50%{opacity:0.55} } @keyframes armDown { 0%,100%{transform:rotate(-8deg)} 50%{transform:rotate(68deg)} } @keyframes legDown { 0%,100%{transform:rotate(8deg)} 50%{transform:rotate(-68deg)} } @keyframes birdArm { 0%,35%,100%{transform:rotate(0deg)} 60%,80%{transform:rotate(-52deg)} } @keyframes birdLeg { 0%,35%,100%{transform:rotate(0deg)} 60%,80%{transform:rotate(48deg)} } @keyframes hipUp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-24px)} } @keyframes arrowUp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} } @keyframes breathe { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(1.05)} } @keyframes lunge { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-5px) rotate(-4deg)} } @keyframes ischRaise { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(-28deg)} } .pir-leg { animation: pirAnim 3s ease-in-out infinite; transform-origin: 75px 74px; } .pir-glow { animation: glowAnim 2s ease-in-out infinite; } .db-arm { animation: armDown 3s ease-in-out infinite; transform-origin: 115px 68px; } .db-leg { animation: legDown 3s ease-in-out infinite; transform-origin: 58px 77px; } .bd-arm { animation: birdArm 3s ease-in-out infinite; transform-origin: 60px 62px; } .bd-leg { animation: birdLeg 3s ease-in-out infinite; transform-origin: 128px 76px; } .hip-body { animation: hipUp 2.5s ease-in-out infinite; transform-origin: 95px 98px; } .hip-arrow { animation: arrowUp 2.5s ease-in-out infinite; } .plank-body { animation: breathe 3s ease-in-out infinite; transform-origin: 128px 123px; } .lunge-torso { animation: lunge 3s ease-in-out infinite; transform-origin: 82px 88px; } .isc-leg { animation: ischRaise 3.5s ease-in-out infinite; transform-origin: 80px 80px; } .core-glow { animation: glowAnim 2.5s ease-in-out infinite; }`}</style>
+<style>{`* { box-sizing: border-box; margin: 0; padding: 0; } .card { background: white; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); } .btn { cursor: pointer; border: none; font-family: inherit; transition: all 0.18s; } .btn:hover { filter: brightness(1.08); transform: translateY(-1px); } .fade { animation: fadeUp 0.3s ease-out; } @keyframes fadeUp { from { opacity:0; transform:translateY(10px) } to { opacity:1; transform:translateY(0) } } /* Stick figure animations */ @keyframes pirAnim { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(-18deg) translateX(4px)} } @keyframes glowAnim { 0%,100%{opacity:0.15} 50%{opacity:0.55} } @keyframes armDown { 0%,100%{transform:rotate(-8deg)} 50%{transform:rotate(68deg)} } @keyframes legDown { 0%,100%{transform:rotate(8deg)} 50%{transform:rotate(-68deg)} } @keyframes birdArm { 0%,35%,100%{transform:rotate(0deg)} 60%,80%{transform:rotate(-52deg)} } @keyframes birdLeg { 0%,35%,100%{transform:rotate(0deg)} 60%,80%{transform:rotate(48deg)} } @keyframes hipUp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-24px)} } @keyframes arrowUp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} } @keyframes breathe { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(1.05)} } @keyframes lunge { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-5px) rotate(-4deg)} } @keyframes ischRaise { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(-28deg)} } .pir-leg { animation: pirAnim 3s ease-in-out infinite; transform-origin: 75px 74px; } .pir-glow { animation: glowAnim 2s ease-in-out infinite; } .db-arm { animation: armDown 3s ease-in-out infinite; transform-origin: 115px 68px; } .db-leg { animation: legDown 3s ease-in-out infinite; transform-origin: 58px 77px; } .bd-arm { animation: birdArm 3s ease-in-out infinite; transform-origin: 60px 62px; } .bd-leg { animation: birdLeg 3s ease-in-out infinite; transform-origin: 128px 76px; } .hip-body { animation: hipUp 2.5s ease-in-out infinite; transform-origin: 95px 98px; } .hip-arrow { animation: arrowUp 2.5s ease-in-out infinite; } .plank-body { animation: breathe 3s ease-in-out infinite; transform-origin: 128px 123px; } .lunge-torso { animation: lunge 3s ease-in-out infinite; transform-origin: 82px 88px; } .isc-leg { animation: ischRaise 3.5s ease-in-out infinite; transform-origin: 80px 80px; } .core-glow { animation: glowAnim 2.5s ease-in-out infinite; }
+@media (max-width: 600px) {
+  .week-card { display: flex !important; flex-wrap: wrap; align-items: flex-start; gap: 8px !important; }
+  .week-day { flex-shrink: 0; width: 56px; }
+  .week-marche { margin-left: auto; flex-shrink: 0; }
+  .week-matin, .week-soir { width: 100%; }
+  .walk-card { grid-template-columns: 52px 1fr !important; }
+  .walk-duration { grid-column: 1 / -1; }
+  .walk-intensity { grid-column: 1; }
+  .walk-hr { grid-column: 2; }
+  .meal-card { grid-template-columns: 56px 1fr !important; }
+  .meal-items { grid-column: 1 / -1; }
+}`}</style>
 
   {/* HEADER */}
   <div style={{ background: "linear-gradient(135deg,#0f172a 0%,#1e3a5f 60%,#0c4a6e 100%)", padding: "36px 24px 28px", textAlign: "center" }}>
@@ -176,20 +188,20 @@ return (
 
             <div style={{ display: "grid", gap: "10px" }}>
               {weeklyPlans[p.id].map((d, i) => (
-                <div key={i} className="card" style={{ padding: "14px 18px", display: "grid", gridTemplateColumns: "56px 1fr 1fr 110px", gap: "10px", alignItems: "center", borderLeft: d.repos ? "4px solid #10b981" : `4px solid ${p.color}` }}>
-                  <div style={{ textAlign: "center" }}>
+                <div key={i} className="card week-card" style={{ padding: "14px 18px", display: "grid", gridTemplateColumns: "56px 1fr 1fr 110px", gap: "10px", alignItems: "center", borderLeft: d.repos ? "4px solid #10b981" : `4px solid ${p.color}` }}>
+                  <div className="week-day" style={{ textAlign: "center" }}>
                     <div style={{ fontSize: "1.3rem" }}>{d.emoji}</div>
                     <div style={{ fontWeight: 900, fontSize: "0.88rem", color: d.repos ? "#10b981" : p.color }}>{d.day}</div>
                   </div>
-                  <div>
+                  <div className="week-matin">
                     <div style={{ fontSize: "0.68rem", fontWeight: 800, color: "#94a3b8", textTransform: "uppercase", marginBottom: "3px" }}>🌅 Matin</div>
                     <div style={{ fontSize: "0.8rem", color: "#334155", fontWeight: 600, lineHeight: 1.4 }}>{d.matin}</div>
                   </div>
-                  <div>
+                  <div className="week-soir">
                     <div style={{ fontSize: "0.68rem", fontWeight: 800, color: "#94a3b8", textTransform: "uppercase", marginBottom: "3px" }}>🌙 Soir</div>
                     <div style={{ fontSize: "0.8rem", color: "#334155", fontWeight: 600, lineHeight: 1.4 }}>{d.soir}</div>
                   </div>
-                  <div style={{ textAlign: "center" }}>
+                  <div className="week-marche" style={{ textAlign: "center" }}>
                     {d.repos ? (
                       <div style={{ background: "#d1fae5", borderRadius: "10px", padding: "8px", fontSize: "0.75rem", fontWeight: 800, color: "#059669" }}>😴 Repos</div>
                     ) : d.marche ? (
@@ -428,20 +440,20 @@ return (
 
         <div style={{ display: "grid", gap: "9px" }}>
           {walkPlan.map((w, i) => (
-            <div key={i} className="card" style={{ padding: "13px 17px", display: "grid", gridTemplateColumns: "52px 90px 1fr 110px 90px", gap: "10px", alignItems: "center", borderLeft: `4px solid ${phaseColor[w.phase]}` }}>
+            <div key={i} className="card walk-card" style={{ padding: "13px 17px", display: "grid", gridTemplateColumns: "52px 90px 1fr 110px 90px", gap: "10px", alignItems: "center", borderLeft: `4px solid ${phaseColor[w.phase]}` }}>
               <div style={{ fontWeight: 900, color: phaseColor[w.phase], textAlign: "center", fontSize: "0.92rem" }}>{w.week}</div>
               <div style={{ background: phaseColor[w.phase] + "18", borderRadius: "8px", padding: "4px 8px", textAlign: "center" }}>
                 <div style={{ fontSize: "0.68rem", fontWeight: 800, color: phaseColor[w.phase] }}>{w.type}</div>
               </div>
-              <div>
+              <div className="walk-duration">
                 <div style={{ fontSize: "0.83rem", fontWeight: 700, color: "#334155" }}>{w.duration}</div>
                 <div style={{ fontSize: "0.75rem", color: "#94a3b8", marginTop: "2px" }}>{w.note}</div>
               </div>
-              <div style={{ textAlign: "center" }}>
+              <div className="walk-intensity" style={{ textAlign: "center" }}>
                 <div style={{ fontSize: "0.67rem", color: "#94a3b8", fontWeight: 700 }}>Intensité</div>
                 <div style={{ fontSize: "0.78rem", fontWeight: 800, color: "#475569" }}>{w.intensity}</div>
               </div>
-              <div style={{ textAlign: "center" }}>
+              <div className="walk-hr" style={{ textAlign: "center" }}>
                 <div style={{ fontSize: "0.67rem", color: "#94a3b8", fontWeight: 700 }}>Fréq. cardiaque</div>
                 <div style={{ fontSize: "0.78rem", fontWeight: 800, color: phaseColor[w.phase] }}>{w.hr}</div>
               </div>
@@ -474,13 +486,13 @@ return (
         {/* Meal plan */}
         <div style={{ display: "grid", gap: "12px", marginBottom: "20px" }}>
           {nutritionData.map((meal, i) => (
-            <div key={i} className="card" style={{ padding: "14px 18px", display: "grid", gridTemplateColumns: "70px 100px 1fr", gap: "14px", alignItems: "center", borderLeft: `4px solid ${meal.color}` }}>
+            <div key={i} className="card meal-card" style={{ padding: "14px 18px", display: "grid", gridTemplateColumns: "70px 100px 1fr", gap: "14px", alignItems: "center", borderLeft: `4px solid ${meal.color}` }}>
               <div style={{ textAlign: "center" }}>
                 <div style={{ fontSize: "1.8rem" }}>{meal.icon}</div>
                 <div style={{ fontSize: "0.68rem", fontWeight: 800, color: meal.color }}>{meal.time}</div>
               </div>
               <div style={{ fontWeight: 900, fontSize: "0.85rem", color: "#1e293b" }}>{meal.meal}</div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+              <div className="meal-items" style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
                 {meal.items.map((item, j) => (
                   <span key={j} style={{ background: meal.color + "18", color: meal.color, borderRadius: "50px", padding: "3px 11px", fontSize: "0.76rem", fontWeight: 700 }}>✓ {item}</span>
                 ))}
