@@ -125,11 +125,11 @@ const [tab, setTab] = useState("programme");
 const [phase, setPhase] = useState(1);
 const [openEx, setOpenEx] = useState(null);
 const [showWelcome, setShowWelcome] = useState(() => localStorage.getItem("bienetre_welcomed") !== "1");
+const [activityTab, setActivityTab] = useState("exercices");
 
 const tabs = [
 { id: "programme", label: "📅 Programme" },
-{ id: "exercices", label: "🏋️ Exercices" },
-{ id: "marche", label: "🚶 Marche & Course" },
+{ id: "activites", label: "🏃 Activités" },
 { id: "nutrition", label: "🥗 Nutrition" },
 { id: "supplements", label: "💊 Compléments" },
 { id: "hydration", label: "💧 Hydratation" },
@@ -178,7 +178,7 @@ return (
                 <b>Lisez votre plan hebdomadaire</b> ci-dessous — choisissez votre phase et suivez jour par jour.
               </li>
               <li style={{ fontSize: "0.85rem", color: "#475569", lineHeight: 1.5 }}>
-                <b style={{ cursor: "pointer", color: "#f59e0b" }} onClick={() => setTab("exercices")}>Apprenez les 7 exercices clés →</b> regardez les animations et mémorisez les étapes.
+                <b style={{ cursor: "pointer", color: "#f59e0b" }} onClick={() => { setTab("activites"); setActivityTab("exercices"); }}>Apprenez les 7 exercices clés →</b> regardez les animations et mémorisez les étapes.
               </li>
               <li style={{ fontSize: "0.85rem", color: "#ef4444", lineHeight: 1.5, fontWeight: 700 }}>
                 ⭐ Priorité absolue : étirement Piriforme droit × 3 fois par jour, tous les jours.
@@ -264,9 +264,24 @@ return (
       </div>
     )}
 
-    {/* ════════════════ EXERCICES ════════════════ */}
-    {tab === "exercices" && (
+    {/* ════════════════ ACTIVITÉS ════════════════ */}
+    {tab === "activites" && (
       <div className="fade">
+
+        {/* Sub-tabs */}
+        <div style={{ display: "flex", background: "white", borderRadius: "14px", padding: "4px", gap: "4px", marginBottom: "22px", boxShadow: "0 2px 10px rgba(0,0,0,0.07)" }}>
+          {[{ id: "exercices", label: "🏋️ Exercices" }, { id: "marche", label: "🚶 Marche & Course" }].map(t => (
+            <button key={t.id} className="btn" onClick={() => setActivityTab(t.id)}
+              style={{ flex: 1, padding: "11px 16px", borderRadius: "10px", fontSize: "0.88rem", fontWeight: 800,
+                background: activityTab === t.id ? "#1e3a5f" : "transparent",
+                color: activityTab === t.id ? "white" : "#64748b" }}>
+              {t.label}
+            </button>
+          ))}
+        </div>
+
+        {activityTab === "exercices" && (
+        <div className="fade">
         <div style={{ background: "#fef2f2", border: "2px solid #fca5a5", borderRadius: "12px", padding: "12px 18px", marginBottom: "20px", fontSize: "0.85rem", fontWeight: 800, color: "#dc2626" }}>
           ⭐ PRIORITÉ ABSOLUE : étirement du piriforme DROIT — matin, midi (bureau), soir. C'est le geste le plus ciblé pour votre douleur fessière haute droite.
         </div>
@@ -437,12 +452,11 @@ return (
             ))}
           </div>
         </div>
-      </div>
-    )}
+        </div>
+        )}
 
-    {/* ════════════════ MARCHE & COURSE ════════════════ */}
-    {tab === "marche" && (
-      <div className="fade">
+        {activityTab === "marche" && (
+        <div className="fade">
         <div className="card" style={{ padding: "16px 20px", marginBottom: "18px", background: "#f0fdf4", borderLeft: "4px solid #10b981" }}>
           <div style={{ fontWeight: 900, color: "#059669", marginBottom: "5px" }}>🏃 Progression marche → course sur 12 semaines</div>
           <div style={{ fontSize: "0.85rem", color: "#166534" }}>Vos protrusions sont "petites" selon le Dr Baur — la course est un objectif atteignable. Règle absolue : zéro douleur dans la jambe pendant ou après.</div>
@@ -496,6 +510,9 @@ return (
             ))}
           </div>
         </div>
+        </div>
+        )}
+
       </div>
     )}
 
