@@ -57,10 +57,10 @@ const nutritionData = [
 { meal: "Réveil", icon: "🌅", time: "7h00", color: "#f59e0b", items: ["1 grand verre d’eau 300ml", "Eau tiède + jus de citron"] },
 { meal: "Petit-déjeuner", icon: "🥣", time: "7h30", color: "#10b981", items: ["Flocons d’avoine + fruits rouges", "Noix / amandes (magnésium)", "Thé vert ou café"] },
 { meal: "Collation matin", icon: "💧", time: "10h00", color: "#06b6d4", items: ["500ml d’eau", "Pause active bureau 2 min"] },
-{ meal: "Déjeuner", icon: "🍽️", time: "12h30", color: "#8b5cf6", items: ["Poisson gras 2×/semaine (saumon, sardines)", "Légumes verts (épinards, brocoli)", "Quinoa ou riz complet", "Huile d’olive vierge extra"] },
+{ meal: "Déjeuner", icon: "🍽️", time: "12h30", color: "#3b82f6", items: ["Poisson gras 2×/semaine (saumon, sardines)", "Légumes verts (épinards, brocoli)", "Quinoa ou riz complet", "Huile d’olive vierge extra"] },
 { meal: "Collation après-midi", icon: "🥝", time: "15h30", color: "#06b6d4", items: ["500ml d’eau", "Kiwi ou orange (vitamine C)", "Pause active bureau"] },
 { meal: "Dîner", icon: "🥗", time: "19h00", color: "#10b981", items: ["Protéines maigres (poulet, œufs, légumineuses)", "Légumes colorés (poivron, tomate)", "Éviter fritures et sucres raffinés"] },
-{ meal: "Coucher", icon: "🌙", time: "21h00", color: "#6366f1", items: ["Tisane camomille (magnésium naturel)", "Dernier verre d’eau 250ml"] },
+{ meal: "Coucher", icon: "🌙", time: "21h00", color: "#10b981", items: ["Tisane camomille (magnésium naturel)", "Dernier verre d’eau 250ml"] },
 ];
 
 const antiInflamFoods = [
@@ -110,10 +110,10 @@ const exercises = [
 { name: "Piriforme droit", tag: "⭐ PRIORITÉ ABSOLUE", timing: "Matin + Midi + Soir", reps: "45 sec × 3 — côté DROIT prioritaire", color: "#ef4444", bg: "#fef2f2", desc: "Sur le dos : croisez la cheville droite sur le genou gauche, ramenez vers vous avec les mains. Insistez nettement plus sur le côté droit — c’est le siège de votre douleur fessière.", steps: ["Allongez-vous sur le dos, genoux fléchis", "Croisez la cheville DROITE sur le genou gauche", "Ramenez le genou gauche vers votre poitrine avec les deux mains", "Sentez l’étirement profond dans la fesse droite", "Tenez 45 sec en respirant normalement"] },
 { name: "Dead Bug", tag: "⭐ EXERCICE CLÉ", timing: "Matin + Après bureau", reps: "5 sec × 8 répétitions", color: "#06b6d4", bg: "#ecfeff", desc: "Sur le dos, 4 membres en l’air. Rentrez le nombril, puis descendez lentement bras droit + jambe gauche sans décoller le bas du dos du sol.", steps: ["Allongez-vous sur le dos, genoux à 90° en l’air, bras tendus vers le plafond", "EXPIREZ et rentrez le nombril vers la colonne — tenez cette contraction", "Descendez lentement le bras DROIT et la jambe GAUCHE vers le sol (5 sec)", "Ne décollez JAMAIS le bas du dos du sol", "Revenez, alternez côté"] },
 { name: "Bird-Dog", tag: "💪 RENFORCEMENT", timing: "Matin", reps: "8–10 répétitions chaque côté", color: "#f59e0b", bg: "#fffbeb", desc: "À 4 pattes, dos parfaitement plat comme une table. Étendez bras droit + jambe gauche simultanément. Tenez 5 secondes. Aucune rotation du bassin.", steps: ["Mettez-vous à 4 pattes, dos plat (vérifiez avec une règle imaginaire)", "Activez le transverse : rentrez légèrement le nombril", "Tendez lentement le BRAS DROIT + JAMBE GAUCHE en même temps", "Tenez 5 secondes, bassin parfaitement stable", "Revenez et alternez"] },
-{ name: "Pont fessier", tag: "💪 RENFORCEMENT", timing: "Matin + Soir", reps: "10–15 répétitions", color: "#8b5cf6", bg: "#f5f3ff", desc: "Allongé sur le dos, genoux fléchis. Montez le bassin en contractant les fesses. Descendez vertèbre par vertèbre.", steps: ["Allongé sur le dos, pieds à plat, genoux fléchis à 90°", "Contractez les abdominaux profonds avant de monter", "Soulevez le bassin en serrant fort les fesses", "Tenez 5 secondes en haut", "Redescendez vertèbre par vertèbre — lentement"] },
+{ name: "Pont fessier", tag: "💪 RENFORCEMENT", timing: "Matin + Soir", reps: "10–15 répétitions", color: "#3b82f6", bg: "#eff6ff", desc: "Allongé sur le dos, genoux fléchis. Montez le bassin en contractant les fesses. Descendez vertèbre par vertèbre.", steps: ["Allongé sur le dos, pieds à plat, genoux fléchis à 90°", "Contractez les abdominaux profonds avant de monter", "Soulevez le bassin en serrant fort les fesses", "Tenez 5 secondes en haut", "Redescendez vertèbre par vertèbre — lentement"] },
 { name: "Planche coudes", tag: "💪 GAINAGE", timing: "Matin", reps: "3 × 20 à 60 secondes", color: "#10b981", bg: "#ecfdf5", desc: "Corps en ligne droite parfaite, appui sur avant-bras et orteils. Rentrez le nombril. Ne retenez pas votre souffle.", steps: ["Appui sur les avant-bras et les orteils", "Corps en ligne parfaite : ni les fesses trop hautes, ni trop basses", "Rentrez le nombril vers la colonne", "Respirez normalement — ne bloquez JAMAIS la respiration", "Progressez de 20 sec vers 60 sec sur les semaines"] },
 { name: "Étirement psoas", tag: "🧘 ÉTIREMENT", timing: "Soir", reps: "40 sec × 2 — chaque côté", color: "#10b981", bg: "#ecfdf5", desc: "En fente avant, genou arrière au sol. Poussez le bassin vers l’avant. Le psoas tendu tire en permanence sur vos lombaires.", steps: ["Mettez-vous en fente avant, genou arrière posé au sol", "Gardez le dos droit, regard vers l’avant", "Poussez doucement le bassin vers l’avant", "Sentez l’étirement à l’avant de la cuisse arrière", "Tenez 40 secondes, changez de côté"] },
-{ name: "Ischio-jambiers", tag: "🧘 ÉTIREMENT", timing: "Soir", reps: "40 sec × 2 — côté droit prioritaire", color: "#6366f1", bg: "#eef2ff", desc: "Sur le dos, une jambe tendue vers le plafond. Tension douce à l’arrière de la cuisse. Ne forcez pas — les ischio-jambiers tendus aggravent les lombaires.", steps: ["Allongé sur le dos, une jambe fléchie pied à plat", "Levez l’autre jambe tendue vers le plafond", "Tenez avec les deux mains derrière la cuisse", "Tension douce seulement — ne tirez pas fort", "Tenez 40 secondes, changez de côté — insistez sur le droit"] },
+{ name: "Ischio-jambiers", tag: "🧘 ÉTIREMENT", timing: "Soir", reps: "40 sec × 2 — côté droit prioritaire", color: "#10b981", bg: "#ecfdf5", desc: "Sur le dos, une jambe tendue vers le plafond. Tension douce à l’arrière de la cuisse. Ne forcez pas — les ischio-jambiers tendus aggravent les lombaires.", steps: ["Allongé sur le dos, une jambe fléchie pied à plat", "Levez l’autre jambe tendue vers le plafond", "Tenez avec les deux mains derrière la cuisse", "Tension douce seulement — ne tirez pas fort", "Tenez 40 secondes, changez de côté — insistez sur le droit"] },
 ];
 
 const phaseColor = { 1: "#06b6d4", 2: "#f59e0b", 3: "#10b981" };
@@ -225,10 +225,10 @@ return (
                 ["8h–17h", "#06b6d4", "Bureau — activation transverse discrète toutes les heures"],
                 ["Toutes 45 min", "#ef4444", "⚡ Levez-vous, marchez 2–3 min dans le couloir — règle non négociable"],
                 ["12h30", "#10b981", "Déjeuner + marche 10 min après le repas"],
-                ["17h30", "#8b5cf6", "Jambes à 90° sur chaise 15 min — décompression post-bureau"],
+                ["17h30", "#3b82f6", "Jambes à 90° sur chaise 15 min — décompression post-bureau"],
                 ["18h00", "#f59e0b", "Routine soir 10–15 min — étirements + renforcement léger"],
                 ["20h00", "#10b981", "Marche 20–30 min si possible (meilleur ami de vos disques)"],
-                ["21h30", "#6366f1", "Coucher — dos + coussin sous genoux, ou côté + coussin entre genoux"],
+                ["21h30", "#10b981", "Coucher — dos + coussin sous genoux, ou côté + coussin entre genoux"],
               ].map(([time, color, text], i, arr) => (
                 <div key={i} style={{ display: "flex", gap: "12px", alignItems: "flex-start", padding: "7px 0", borderBottom: i < arr.length - 1 ? "1px solid #f1f5f9" : "none" }}>
                   <div style={{ background: color + "22", color, borderRadius: "8px", padding: "3px 10px", fontSize: "0.78rem", fontWeight: 800, whiteSpace: "nowrap", minWidth: "105px", textAlign: "center", flexShrink: 0, paddingTop: "5px" }}>{time}</div>
@@ -320,11 +320,11 @@ return (
                     <line x1="56" y1="108" x2="56" y2="80" stroke="#fbbf24" strokeWidth="5" strokeLinecap="round"/>
                     <line x1="40" y1="108" x2="70" y2="108" stroke="#fbbf24" strokeWidth="4" strokeLinecap="round"/>
                     <g className="hip-body">
-                      <path d="M 40 104 Q 75 74 112 74 Q 138 74 158 94" stroke="#8b5cf6" strokeWidth="7" fill="none" strokeLinecap="round"/>
-                      <ellipse cx="78" cy="82" rx="22" ry="10" fill="#8b5cf6" opacity="0.2"/>
+                      <path d="M 40 104 Q 75 74 112 74 Q 138 74 158 94" stroke="#3b82f6" strokeWidth="7" fill="none" strokeLinecap="round"/>
+                      <ellipse cx="78" cy="82" rx="22" ry="10" fill="#3b82f6" opacity="0.2"/>
                       <text className="hip-arrow" x="78" y="58" fontFamily="system-ui" fontSize="20" fill="#f59e0b" textAnchor="middle" fontWeight="900">↑</text>
                     </g>
-                    <text x="90" y="118" fontFamily="system-ui" fontSize="10" fill="#8b5cf6" textAnchor="middle" fontWeight="800">Serrez les fesses en montant</text>
+                    <text x="90" y="118" fontFamily="system-ui" fontSize="10" fill="#3b82f6" textAnchor="middle" fontWeight="800">Serrez les fesses en montant</text>
                   </svg>
                 )}
                 {i === 4 && ( // Planche
@@ -365,7 +365,7 @@ return (
                 {i === 6 && ( // Ischio
                   <svg viewBox="0 0 180 120" width="180" height="110">
                     <line x1="10" y1="105" x2="170" y2="105" stroke="#c7d2fe" strokeWidth="2"/>
-                    <rect x="55" y="76" width="90" height="20" rx="10" fill="#6366f1" opacity="0.8"/>
+                    <rect x="55" y="76" width="90" height="20" rx="10" fill="#10b981" opacity="0.8"/>
                     <circle cx="155" cy="86" r="12" fill="#fbbf24"/>
                     <circle cx="150" cy="82" r="2.5" fill="#444"/><circle cx="158" cy="82" r="2.5" fill="#444"/>
                     <line x1="65" y1="94" x2="60" y2="105" stroke="#fbbf24" strokeWidth="5" strokeLinecap="round"/>
@@ -374,7 +374,7 @@ return (
                       <line x1="80" y1="78" x2="80" y2="36" stroke="#f59e0b" strokeWidth="10" strokeLinecap="round" opacity="0.18"/>
                       <ellipse cx="80" cy="31" rx="7" ry="5" fill="#fbbf24"/>
                     </g>
-                    <text x="90" y="118" fontFamily="system-ui" fontSize="10" fill="#6366f1" textAnchor="middle" fontWeight="800">Tension douce — ne forcez pas</text>
+                    <text x="90" y="118" fontFamily="system-ui" fontSize="10" fill="#10b981" textAnchor="middle" fontWeight="800">Tension douce — ne forcez pas</text>
                   </svg>
                 )}
               </div>
@@ -589,7 +589,7 @@ return (
             {[
               { time: "🌅 Matin à jeun", color: "#f59e0b", items: ["Collagène marin 10g", "Vitamine C 500mg", "Vitamine D3 2000 UI + K2"] },
               { time: "🍽️ Avec les repas", color: "#10b981", items: ["Oméga-3 2–3g", "Curcuma + Pipérine 500mg", "Glucosamine 1500mg"] },
-              { time: "🌙 Soir au coucher", color: "#6366f1", items: ["Magnésium bisglycinate 300–400mg", "Tisane camomille"] },
+              { time: "🌙 Soir au coucher", color: "#10b981", items: ["Magnésium bisglycinate 300–400mg", "Tisane camomille"] },
             ].map((stack, i) => (
               <div key={i} style={{ background: "white", borderRadius: "12px", padding: "14px 16px", border: `1.5px solid ${stack.color}30` }}>
                 <div style={{ fontWeight: 900, fontSize: "0.83rem", color: stack.color, marginBottom: "10px" }}>{stack.time}</div>
@@ -636,7 +636,7 @@ return (
           {[
             { icon: "🌅", title: "Le matin en premier", tip: "300ml avant le café. C'est le moment où le corps est le plus déshydraté. Vos disques se réhydratent la nuit — aidez le processus.", color: "#f59e0b" },
             { icon: "🍋", title: "Eau citronnée", tip: "Citron dans l'eau du matin. La vitamine C stimule directement la synthèse de collagène discal.", color: "#10b981" },
-            { icon: "☕", title: "Café & thé", tip: "Max 2 cafés/jour. Diurétiques — compensez avec 200ml d'eau supplémentaire après chaque café.", color: "#8b5cf6" },
+            { icon: "☕", title: "Café & thé", tip: "Max 2 cafés/jour. Diurétiques — compensez avec 200ml d'eau supplémentaire après chaque café.", color: "#3b82f6" },
             { icon: "🥤", title: "Sodas & alcool", tip: "À éviter. Pro-inflammatoires ET déshydratants — doublement nuisibles pour vos disques.", color: "#ef4444" },
             { icon: "🫙", title: "Bouteille au bureau", tip: "Posez 1L d'eau sur votre bureau. Objectif simple : la finir avant 17h.", color: "#06b6d4" },
             { icon: "💦", title: "Jours d'effort", tip: "Ajoutez 300–500ml les jours de marche ou d'exercice. La sudation déshydrate les disques.", color: "#3b82f6" },
