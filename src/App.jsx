@@ -138,7 +138,6 @@ return (
 <div style={{ fontFamily: "system-ui, sans-serif", background: "#f1f5f9", minHeight: "100vh", color: "#1e293b" }}>
 <style>{`* { box-sizing: border-box; margin: 0; padding: 0; } .card { background: white; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); } .btn { cursor: pointer; border: none; font-family: inherit; transition: all 0.18s; } .btn:hover { filter: brightness(1.08); transform: translateY(-1px); } .fade { animation: fadeUp 0.3s ease-out; } @keyframes fadeUp { from { opacity:0; transform:translateY(10px) } to { opacity:1; transform:translateY(0) } } /* Stick figure animations */ @keyframes pirAnim { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(-18deg) translateX(4px)} } @keyframes glowAnim { 0%,100%{opacity:0.15} 50%{opacity:0.55} } @keyframes armDown { 0%,100%{transform:rotate(-8deg)} 50%{transform:rotate(68deg)} } @keyframes legDown { 0%,100%{transform:rotate(8deg)} 50%{transform:rotate(-68deg)} } @keyframes birdArm { 0%,35%,100%{transform:rotate(0deg)} 60%,80%{transform:rotate(-52deg)} } @keyframes birdLeg { 0%,35%,100%{transform:rotate(0deg)} 60%,80%{transform:rotate(48deg)} } @keyframes hipUp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-24px)} } @keyframes arrowUp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} } @keyframes breathe { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(1.05)} } @keyframes lunge { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-5px) rotate(-4deg)} } @keyframes ischRaise { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(-28deg)} } .pir-leg { animation: pirAnim 3s ease-in-out infinite; transform-origin: 75px 74px; } .pir-glow { animation: glowAnim 2s ease-in-out infinite; } .db-arm { animation: armDown 3s ease-in-out infinite; transform-origin: 115px 68px; } .db-leg { animation: legDown 3s ease-in-out infinite; transform-origin: 58px 77px; } .bd-arm { animation: birdArm 3s ease-in-out infinite; transform-origin: 60px 62px; } .bd-leg { animation: birdLeg 3s ease-in-out infinite; transform-origin: 128px 76px; } .hip-body { animation: hipUp 2.5s ease-in-out infinite; transform-origin: 95px 98px; } .hip-arrow { animation: arrowUp 2.5s ease-in-out infinite; } .plank-body { animation: breathe 3s ease-in-out infinite; transform-origin: 128px 123px; } .lunge-torso { animation: lunge 3s ease-in-out infinite; transform-origin: 82px 88px; } .isc-leg { animation: ischRaise 3.5s ease-in-out infinite; transform-origin: 80px 80px; } .core-glow { animation: glowAnim 2.5s ease-in-out infinite; }`}</style>
 
-```
   {/* HEADER */}
   <div style={{ background: "linear-gradient(135deg,#0f172a 0%,#1e3a5f 60%,#0c4a6e 100%)", padding: "36px 24px 28px", textAlign: "center" }}>
     <div style={{ fontSize: "2.4rem", marginBottom: "6px" }}>🦴</div>
@@ -677,7 +676,6 @@ return (
     Plan personnalisé basé sur votre IRM (Dr Baur) — Discopathie L4-L5 / L5-S1, protrusion paramédiane droite. Consultez votre kinésithérapeute et médecin pour le suivi.
   </div>
 </div>
-```
 
 );
 }
