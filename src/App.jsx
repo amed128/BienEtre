@@ -169,7 +169,7 @@ return (
         <div style={{ display: "flex", gap: "10px", marginBottom: "20px", flexWrap: "wrap" }}>
           {phases.map(p => (
             <button key={p.id} className="btn" onClick={() => setPhase(p.id)}
-              style={{ padding: "9px 18px", borderRadius: "50px", fontSize: "0.83rem", fontWeight: 800, background: phase === p.id ? p.color : "white", color: phase === p.id ? "white" : p.color, border: `2px solid ${p.color}` }}>
+              style={{ padding: "12px 20px", borderRadius: "50px", fontSize: "0.83rem", fontWeight: 800, background: phase === p.id ? p.color : "white", color: phase === p.id ? "white" : p.color, border: `2px solid ${p.color}` }}>
               {p.icon} {p.label} · {p.weeks}
             </button>
           ))}
@@ -194,11 +194,11 @@ return (
                     <div style={{ fontWeight: 900, fontSize: "0.88rem", color: d.repos ? "#10b981" : p.color }}>{d.day}</div>
                   </div>
                   <div className="week-matin">
-                    <div style={{ fontSize: "0.68rem", fontWeight: 800, color: "#94a3b8", textTransform: "uppercase", marginBottom: "3px" }}>🌅 Matin</div>
+                    <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "#94a3b8", textTransform: "uppercase", marginBottom: "3px" }}>🌅 Matin</div>
                     <div style={{ fontSize: "0.8rem", color: "#334155", fontWeight: 600, lineHeight: 1.4 }}>{d.matin}</div>
                   </div>
                   <div className="week-soir">
-                    <div style={{ fontSize: "0.68rem", fontWeight: 800, color: "#94a3b8", textTransform: "uppercase", marginBottom: "3px" }}>🌙 Soir</div>
+                    <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "#94a3b8", textTransform: "uppercase", marginBottom: "3px" }}>🌙 Soir</div>
                     <div style={{ fontSize: "0.8rem", color: "#334155", fontWeight: 600, lineHeight: 1.4 }}>{d.soir}</div>
                   </div>
                   <div className="week-marche" style={{ textAlign: "center" }}>
@@ -207,7 +207,7 @@ return (
                     ) : d.marche ? (
                       <div style={{ background: `${p.color}18`, borderRadius: "10px", padding: "8px" }}>
                         <div style={{ fontSize: "1.1rem" }}>🚶</div>
-                        <div style={{ fontSize: "0.72rem", fontWeight: 800, color: p.color }}>{d.marche}</div>
+                        <div style={{ fontSize: "0.78rem", fontWeight: 800, color: p.color }}>{d.marche}</div>
                       </div>
                     ) : (
                       <div style={{ color: "#cbd5e1", fontSize: "0.75rem", fontWeight: 700 }}>—</div>
@@ -231,7 +231,7 @@ return (
                 ["21h30", "#6366f1", "Coucher — dos + coussin sous genoux, ou côté + coussin entre genoux"],
               ].map(([time, color, text], i, arr) => (
                 <div key={i} style={{ display: "flex", gap: "12px", alignItems: "flex-start", padding: "7px 0", borderBottom: i < arr.length - 1 ? "1px solid #f1f5f9" : "none" }}>
-                  <div style={{ background: color + "22", color, borderRadius: "8px", padding: "3px 10px", fontSize: "0.72rem", fontWeight: 800, whiteSpace: "nowrap", minWidth: "105px", textAlign: "center", flexShrink: 0, paddingTop: "5px" }}>{time}</div>
+                  <div style={{ background: color + "22", color, borderRadius: "8px", padding: "3px 10px", fontSize: "0.78rem", fontWeight: 800, whiteSpace: "nowrap", minWidth: "105px", textAlign: "center", flexShrink: 0, paddingTop: "5px" }}>{time}</div>
                   <div style={{ fontSize: "0.82rem", color: "#475569", fontWeight: 600, paddingTop: "4px", lineHeight: 1.45 }}>{text}</div>
                 </div>
               ))}
@@ -380,12 +380,12 @@ return (
               </div>
 
               <div style={{ padding: "14px 16px" }}>
-                <div style={{ fontSize: "0.68rem", fontWeight: 800, color: ex.color, marginBottom: "3px" }}>{ex.tag}</div>
+                <div style={{ fontSize: "0.75rem", fontWeight: 800, color: ex.color, marginBottom: "3px" }}>{ex.tag}</div>
                 <div style={{ fontSize: "0.98rem", fontWeight: 900, marginBottom: "5px" }}>{ex.name}</div>
                 <div style={{ fontSize: "0.8rem", color: "#64748b", marginBottom: "10px", lineHeight: 1.45 }}>{ex.desc}</div>
                 <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
-                  <span style={{ background: ex.color + "18", color: ex.color, borderRadius: "50px", padding: "3px 10px", fontSize: "0.72rem", fontWeight: 800 }}>{ex.reps}</span>
-                  <span style={{ background: "#f1f5f9", color: "#64748b", borderRadius: "50px", padding: "3px 10px", fontSize: "0.72rem", fontWeight: 700 }}>{ex.timing}</span>
+                  <span style={{ background: ex.color + "18", color: ex.color, borderRadius: "50px", padding: "3px 10px", fontSize: "0.78rem", fontWeight: 800 }}>{ex.reps}</span>
+                  <span style={{ background: "#f1f5f9", color: "#64748b", borderRadius: "50px", padding: "3px 10px", fontSize: "0.78rem", fontWeight: 700 }}>{ex.timing}</span>
                 </div>
 
                 {/* Steps accordion */}
@@ -400,7 +400,7 @@ return (
                     ))}
                   </div>
                 )}
-                <div style={{ marginTop: "8px", fontSize: "0.72rem", color: ex.color, fontWeight: 700 }}>{openEx === i ? "▲ Masquer les étapes" : "▼ Voir les étapes détaillées"}</div>
+                <div style={{ marginTop: "12px", padding: "8px 0", fontSize: "0.85rem", color: ex.color, fontWeight: 700, cursor: "pointer" }}>{openEx === i ? "▲ Masquer les étapes" : "▼ Voir les étapes détaillées"}</div>
               </div>
             </div>
           ))}
@@ -443,18 +443,18 @@ return (
             <div key={i} className="card walk-card" style={{ padding: "13px 17px", display: "grid", gridTemplateColumns: "52px 90px 1fr 110px 90px", gap: "10px", alignItems: "center", borderLeft: `4px solid ${phaseColor[w.phase]}` }}>
               <div style={{ fontWeight: 900, color: phaseColor[w.phase], textAlign: "center", fontSize: "0.92rem" }}>{w.week}</div>
               <div style={{ background: phaseColor[w.phase] + "18", borderRadius: "8px", padding: "4px 8px", textAlign: "center" }}>
-                <div style={{ fontSize: "0.68rem", fontWeight: 800, color: phaseColor[w.phase] }}>{w.type}</div>
+                <div style={{ fontSize: "0.75rem", fontWeight: 800, color: phaseColor[w.phase] }}>{w.type}</div>
               </div>
               <div className="walk-duration">
                 <div style={{ fontSize: "0.83rem", fontWeight: 700, color: "#334155" }}>{w.duration}</div>
                 <div style={{ fontSize: "0.75rem", color: "#94a3b8", marginTop: "2px" }}>{w.note}</div>
               </div>
               <div className="walk-intensity" style={{ textAlign: "center" }}>
-                <div style={{ fontSize: "0.67rem", color: "#94a3b8", fontWeight: 700 }}>Intensité</div>
+                <div style={{ fontSize: "0.75rem", color: "#94a3b8", fontWeight: 700 }}>Intensité</div>
                 <div style={{ fontSize: "0.78rem", fontWeight: 800, color: "#475569" }}>{w.intensity}</div>
               </div>
               <div className="walk-hr" style={{ textAlign: "center" }}>
-                <div style={{ fontSize: "0.67rem", color: "#94a3b8", fontWeight: 700 }}>Fréq. cardiaque</div>
+                <div style={{ fontSize: "0.75rem", color: "#94a3b8", fontWeight: 700 }}>Fréq. cardiaque</div>
                 <div style={{ fontSize: "0.78rem", fontWeight: 800, color: phaseColor[w.phase] }}>{w.hr}</div>
               </div>
             </div>
@@ -489,7 +489,7 @@ return (
             <div key={i} className="card meal-card" style={{ padding: "14px 18px", display: "grid", gridTemplateColumns: "70px 100px 1fr", gap: "14px", alignItems: "center", borderLeft: `4px solid ${meal.color}` }}>
               <div style={{ textAlign: "center" }}>
                 <div style={{ fontSize: "1.8rem" }}>{meal.icon}</div>
-                <div style={{ fontSize: "0.68rem", fontWeight: 800, color: meal.color }}>{meal.time}</div>
+                <div style={{ fontSize: "0.75rem", fontWeight: 800, color: meal.color }}>{meal.time}</div>
               </div>
               <div style={{ fontWeight: 900, fontSize: "0.85rem", color: "#1e293b" }}>{meal.meal}</div>
               <div className="meal-items" style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
@@ -555,7 +555,7 @@ return (
               <div style={{ width: "12px", height: "12px", borderRadius: "50%", background: color, flexShrink: 0 }}/>
               <div>
                 <div style={{ fontWeight: 900, fontSize: "0.78rem", color }}>{label}</div>
-                <div style={{ fontSize: "0.72rem", color: "#64748b" }}>{desc}</div>
+                <div style={{ fontSize: "0.78rem", color: "#64748b" }}>{desc}</div>
               </div>
             </div>
           ))}
@@ -574,8 +574,8 @@ return (
                 <div style={{ fontWeight: 900, fontSize: "1rem", marginBottom: "5px" }}>{s.name}</div>
                 <div style={{ fontSize: "0.8rem", color: "#64748b", marginBottom: "12px", lineHeight: 1.5 }}>{s.why}</div>
                 <div style={{ display: "flex", gap: "7px", flexWrap: "wrap" }}>
-                  <span style={{ background: "#f1f5f9", borderRadius: "50px", padding: "4px 12px", fontSize: "0.74rem", fontWeight: 800, color: "#475569" }}>💊 {s.dose}</span>
-                  <span style={{ background: "#f1f5f9", borderRadius: "50px", padding: "4px 12px", fontSize: "0.74rem", fontWeight: 700, color: "#64748b" }}>⏰ {s.timing}</span>
+                  <span style={{ background: "#f1f5f9", borderRadius: "50px", padding: "4px 12px", fontSize: "0.78rem", fontWeight: 800, color: "#475569" }}>💊 {s.dose}</span>
+                  <span style={{ background: "#f1f5f9", borderRadius: "50px", padding: "4px 12px", fontSize: "0.78rem", fontWeight: 700, color: "#64748b" }}>⏰ {s.timing}</span>
                 </div>
               </div>
             );
@@ -619,7 +619,7 @@ return (
                 <div style={{ fontSize: "1.6rem", marginBottom: "4px" }}>{h.icon}</div>
                 <div style={{ fontWeight: 900, fontSize: "0.92rem", color: "#3b82f6" }}>{h.amount} ml</div>
                 <div style={{ fontSize: "0.7rem", fontWeight: 800, color: "#94a3b8", marginBottom: "2px" }}>{h.time}</div>
-                <div style={{ fontSize: "0.68rem", color: "#64748b", lineHeight: 1.3 }}>{h.note}</div>
+                <div style={{ fontSize: "0.75rem", color: "#64748b", lineHeight: 1.3 }}>{h.note}</div>
                 <div style={{ height: "6px", background: "#dbeafe", borderRadius: "3px", marginTop: "6px", overflow: "hidden" }}>
                   <div style={{ height: "100%", width: `${Math.min((h.amount / 300) * 100, 100)}%`, background: "#3b82f6", borderRadius: "3px" }}/>
                 </div>
@@ -663,7 +663,7 @@ return (
             ].map((u, i) => (
               <div key={i} style={{ textAlign: "center", flex: "1", minWidth: "80px" }}>
                 <div style={{ height: "30px", background: u.color, borderRadius: "8px", border: "1.5px solid #e2e8f0", marginBottom: "5px" }}/>
-                <div style={{ fontSize: "0.68rem", color: "#64748b", marginBottom: "3px" }}>{u.label}</div>
+                <div style={{ fontSize: "0.75rem", color: "#64748b", marginBottom: "3px" }}>{u.label}</div>
                 <div style={{ fontSize: "0.7rem", fontWeight: 800, color: u.textColor }}>{u.status}</div>
               </div>
             ))}
