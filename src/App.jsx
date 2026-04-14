@@ -124,6 +124,7 @@ export default function Plan() {
 const [tab, setTab] = useState("programme");
 const [phase, setPhase] = useState(1);
 const [openEx, setOpenEx] = useState(null);
+const [showWelcome, setShowWelcome] = useState(() => localStorage.getItem("bienetre_welcomed") !== "1");
 
 const tabs = [
 { id: "programme", label: "📅 Programme" },
@@ -165,6 +166,28 @@ return (
     {/* ════════════════ PROGRAMME ════════════════ */}
     {tab === "programme" && (
       <div className="fade">
+
+        {/* Welcome card */}
+        {showWelcome && (
+          <div className="card card-elevated" style={{ padding: "18px 22px", marginBottom: "22px", background: "#fefce8", borderLeft: "5px solid #f59e0b", position: "relative" }}>
+            <button onClick={() => { setShowWelcome(false); localStorage.setItem("bienetre_welcomed", "1"); }}
+              style={{ position: "absolute", top: "12px", right: "14px", background: "none", border: "none", cursor: "pointer", fontSize: "1.1rem", color: "#94a3b8", lineHeight: 1 }}>✕</button>
+            <div style={{ fontWeight: 900, fontSize: "1rem", color: "#92400e", marginBottom: "10px" }}>👋 Bienvenue — Par où commencer ?</div>
+            <ol style={{ paddingLeft: "20px", display: "flex", flexDirection: "column", gap: "8px" }}>
+              <li style={{ fontSize: "0.85rem", color: "#475569", lineHeight: 1.5 }}>
+                <b>Lisez votre plan hebdomadaire</b> ci-dessous — choisissez votre phase et suivez jour par jour.
+              </li>
+              <li style={{ fontSize: "0.85rem", color: "#475569", lineHeight: 1.5 }}>
+                <b style={{ cursor: "pointer", color: "#f59e0b" }} onClick={() => setTab("exercices")}>Apprenez les 7 exercices clés →</b> regardez les animations et mémorisez les étapes.
+              </li>
+              <li style={{ fontSize: "0.85rem", color: "#ef4444", lineHeight: 1.5, fontWeight: 700 }}>
+                ⭐ Priorité absolue : étirement Piriforme droit × 3 fois par jour, tous les jours.
+              </li>
+            </ol>
+            <div style={{ marginTop: "12px", fontSize: "0.75rem", color: "#a16207" }}>Appuyez sur ✕ pour masquer définitivement.</div>
+          </div>
+        )}
+
         {/* Phase selector */}
         <div style={{ display: "flex", gap: "10px", marginBottom: "20px", flexWrap: "wrap" }}>
           {phases.map(p => (
