@@ -1,141 +1,141 @@
-import { useState } from “react”;
+import { useState } from "react";
 
 // ── DATA ──────────────────────────────────────────────────────────────────────
 
 const phases = [
-{ id: 1, label: “Phase 1”, weeks: “S1–S3”, subtitle: “Réveil & décompression”, color: “#06b6d4”, bg: “#ecfeff”, icon: “🌱”, goal: “Activer les muscles profonds, décompresser les disques, soulager la douleur fessière droite.” },
-{ id: 2, label: “Phase 2”, weeks: “S4–S7”, subtitle: “Consolidation & marche”, color: “#f59e0b”, bg: “#fffbeb”, icon: “🚶”, goal: “Renforcer la ceinture profonde, introduire la marche active, améliorer l’endurance.” },
-{ id: 3, label: “Phase 3”, weeks: “S8–S12”, subtitle: “Progression & endurance”, color: “#10b981”, bg: “#ecfdf5”, icon: “🏃”, goal: “Introduire la course légère, renforcer globalement, ancrer les habitudes définitives.” },
+{ id: 1, label: "Phase 1", weeks: "S1–S3", subtitle: "Réveil & décompression", color: "#06b6d4", bg: "#ecfeff", icon: "🌱", goal: "Activer les muscles profonds, décompresser les disques, soulager la douleur fessière droite." },
+{ id: 2, label: "Phase 2", weeks: "S4–S7", subtitle: "Consolidation & marche", color: "#f59e0b", bg: "#fffbeb", icon: "🚶", goal: "Renforcer la ceinture profonde, introduire la marche active, améliorer l’endurance." },
+{ id: 3, label: "Phase 3", weeks: "S8–S12", subtitle: "Progression & endurance", color: "#10b981", bg: "#ecfdf5", icon: "🏃", goal: "Introduire la course légère, renforcer globalement, ancrer les habitudes définitives." },
 ];
 
 const weeklyPlans = {
 1: [
-{ day: “Lun”, emoji: “💪”, matin: “Dead Bug + Bird-Dog + Bercement bassin — 10 min”, soir: “Jambes 90° + Piriforme droit × 3 + Psoas — 15 min”, marche: null },
-{ day: “Mar”, emoji: “🚶”, matin: “Activation transverse — 5 min”, soir: “Marche douce 20 min + étirements 10 min”, marche: “20 min” },
-{ day: “Mer”, emoji: “💪”, matin: “Pont fessier + Dead Bug — 10 min”, soir: “Piriforme droit × 3 + Ischio-jambiers”, marche: null },
-{ day: “Jeu”, emoji: “🚶”, matin: “Activation transverse — 5 min”, soir: “Marche douce 20 min”, marche: “20 min” },
-{ day: “Ven”, emoji: “💪”, matin: “Dead Bug + Bird-Dog + Superman — 12 min”, soir: “Étirements complets — 15 min”, marche: null },
-{ day: “Sam”, emoji: “🌿”, matin: “—”, soir: “Marche tranquille 30 min en nature”, marche: “30 min” },
-{ day: “Dim”, emoji: “😴”, matin: “Genoux poitrine + Piriforme — 10 min”, soir: “Repos total”, marche: null, repos: true },
+{ day: "Lun", emoji: "💪", matin: "Dead Bug + Bird-Dog + Bercement bassin — 10 min", soir: "Jambes 90° + Piriforme droit × 3 + Psoas — 15 min", marche: null },
+{ day: "Mar", emoji: "🚶", matin: "Activation transverse — 5 min", soir: "Marche douce 20 min + étirements 10 min", marche: "20 min" },
+{ day: "Mer", emoji: "💪", matin: "Pont fessier + Dead Bug — 10 min", soir: "Piriforme droit × 3 + Ischio-jambiers", marche: null },
+{ day: "Jeu", emoji: "🚶", matin: "Activation transverse — 5 min", soir: "Marche douce 20 min", marche: "20 min" },
+{ day: "Ven", emoji: "💪", matin: "Dead Bug + Bird-Dog + Superman — 12 min", soir: "Étirements complets — 15 min", marche: null },
+{ day: "Sam", emoji: "🌿", matin: "—", soir: "Marche tranquille 30 min en nature", marche: "30 min" },
+{ day: "Dim", emoji: "😴", matin: "Genoux poitrine + Piriforme — 10 min", soir: "Repos total", marche: null, repos: true },
 ],
 2: [
-{ day: “Lun”, emoji: “💪”, matin: “Dead Bug + Bird-Dog + Planche coudes — 15 min”, soir: “Étirements 15 min + Piriforme droit”, marche: “30 min marche active” },
-{ day: “Mar”, emoji: “🚶”, matin: “Activation + Pont fessier unilatéral”, soir: “Marche 25 min”, marche: “25 min” },
-{ day: “Mer”, emoji: “💪”, matin: “Renforcement complet — 15 min”, soir: “Étirements 15 min”, marche: null },
-{ day: “Jeu”, emoji: “🚶”, matin: “Activation transverse”, soir: “Marche active 35 min”, marche: “35 min” },
-{ day: “Ven”, emoji: “💪”, matin: “Dead Bug + Planche latérale + Superman — 15 min”, soir: “Étirements complets”, marche: null },
-{ day: “Sam”, emoji: “🌿”, matin: “—”, soir: “Marche en nature 45 min”, marche: “45 min” },
-{ day: “Dim”, emoji: “😴”, matin: “Étirements doux — 10 min”, soir: “Repos actif”, marche: null, repos: true },
+{ day: "Lun", emoji: "💪", matin: "Dead Bug + Bird-Dog + Planche coudes — 15 min", soir: "Étirements 15 min + Piriforme droit", marche: "30 min marche active" },
+{ day: "Mar", emoji: "🚶", matin: "Activation + Pont fessier unilatéral", soir: "Marche 25 min", marche: "25 min" },
+{ day: "Mer", emoji: "💪", matin: "Renforcement complet — 15 min", soir: "Étirements 15 min", marche: null },
+{ day: "Jeu", emoji: "🚶", matin: "Activation transverse", soir: "Marche active 35 min", marche: "35 min" },
+{ day: "Ven", emoji: "💪", matin: "Dead Bug + Planche latérale + Superman — 15 min", soir: "Étirements complets", marche: null },
+{ day: "Sam", emoji: "🌿", matin: "—", soir: "Marche en nature 45 min", marche: "45 min" },
+{ day: "Dim", emoji: "😴", matin: "Étirements doux — 10 min", soir: "Repos actif", marche: null, repos: true },
 ],
 3: [
-{ day: “Lun”, emoji: “💪”, matin: “Renforcement profond — 20 min”, soir: “Étirements 15 min”, marche: “30 min marche + 3×1 min trot” },
-{ day: “Mar”, emoji: “🚶”, matin: “Activation + Gainage”, soir: “Marche active 30 min”, marche: “30 min” },
-{ day: “Mer”, emoji: “💪”, matin: “Renforcement 20 min”, soir: “Étirements + bain chaud lombaires”, marche: null },
-{ day: “Jeu”, emoji: “🏃”, matin: “Activation transverse”, soir: “35 min — 20 marche + 5×1 min trot”, marche: “35 min” },
-{ day: “Ven”, emoji: “💪”, matin: “Renforcement complet — 20 min”, soir: “Étirements complets”, marche: null },
-{ day: “Sam”, emoji: “🌿”, matin: “—”, soir: “50 min — marche/trot alternés”, marche: “50 min” },
-{ day: “Dim”, emoji: “😴”, matin: “Étirements doux + piriforme”, soir: “Repos total”, marche: null, repos: true },
+{ day: "Lun", emoji: "💪", matin: "Renforcement profond — 20 min", soir: "Étirements 15 min", marche: "30 min marche + 3×1 min trot" },
+{ day: "Mar", emoji: "🚶", matin: "Activation + Gainage", soir: "Marche active 30 min", marche: "30 min" },
+{ day: "Mer", emoji: "💪", matin: "Renforcement 20 min", soir: "Étirements + bain chaud lombaires", marche: null },
+{ day: "Jeu", emoji: "🏃", matin: "Activation transverse", soir: "35 min — 20 marche + 5×1 min trot", marche: "35 min" },
+{ day: "Ven", emoji: "💪", matin: "Renforcement complet — 20 min", soir: "Étirements complets", marche: null },
+{ day: "Sam", emoji: "🌿", matin: "—", soir: "50 min — marche/trot alternés", marche: "50 min" },
+{ day: "Dim", emoji: "😴", matin: "Étirements doux + piriforme", soir: "Repos total", marche: null, repos: true },
 ],
 };
 
 const walkPlan = [
-{ phase: 1, week: “S1”, type: “Marche douce”, duration: “20 min × 3/sem”, intensity: “Très facile”, hr: “< 110 bpm”, note: “Terrain plat, rythme conversation” },
-{ phase: 1, week: “S2”, type: “Marche douce”, duration: “25 min × 4/sem”, intensity: “Facile”, hr: “< 115 bpm”, note: “Dos droit, abdos légèrement contractés” },
-{ phase: 1, week: “S3”, type: “Marche active”, duration: “30 min × 4/sem”, intensity: “Facile”, hr: “< 120 bpm”, note: “Commencez à marcher un peu plus vite” },
-{ phase: 2, week: “S4”, type: “Marche active”, duration: “35 min × 4/sem”, intensity: “Modéré”, hr: “120–130 bpm”, note: “Légère côte si possible” },
-{ phase: 2, week: “S5”, type: “Marche active”, duration: “40 min × 4/sem + longue”, intensity: “Modéré”, hr: “120–130 bpm”, note: “Sortie longue 50 min le week-end” },
-{ phase: 2, week: “S6”, type: “Marche rapide”, duration: “40 min × 4/sem”, intensity: “Modéré–soutenu”, hr: “130–140 bpm”, note: “Bras actifs, foulée énergique” },
-{ phase: 2, week: “S7”, type: “Marche rapide”, duration: “45 min × 4/sem”, intensity: “Soutenu”, hr: “130–140 bpm”, note: “Introduire 2–3 × 1 min de trot léger” },
-{ phase: 3, week: “S8”, type: “Marche + trot”, duration: “40 min × 4/sem”, intensity: “Modéré”, hr: “130–145 bpm”, note: “5 min marche / 1 min trot × 5” },
-{ phase: 3, week: “S9”, type: “Marche + trot”, duration: “40 min × 4/sem”, intensity: “Modéré”, hr: “130–145 bpm”, note: “4 min marche / 2 min trot × 5” },
-{ phase: 3, week: “S10”, type: “Trot progressif”, duration: “45 min × 4/sem”, intensity: “Modéré–soutenu”, hr: “140–150 bpm”, note: “3 min marche / 3 min trot” },
-{ phase: 3, week: “S11”, type: “Course légère”, duration: “45 min × 4/sem”, intensity: “Soutenu”, hr: “145–155 bpm”, note: “2 min marche / 5 min course” },
-{ phase: 3, week: “S12”, type: “Course légère”, duration: “50 min × 4/sem”, intensity: “Soutenu”, hr: “145–155 bpm”, note: “Course continue 20 min si aucune douleur” },
+{ phase: 1, week: "S1", type: "Marche douce", duration: "20 min × 3/sem", intensity: "Très facile", hr: "< 110 bpm", note: "Terrain plat, rythme conversation" },
+{ phase: 1, week: "S2", type: "Marche douce", duration: "25 min × 4/sem", intensity: "Facile", hr: "< 115 bpm", note: "Dos droit, abdos légèrement contractés" },
+{ phase: 1, week: "S3", type: "Marche active", duration: "30 min × 4/sem", intensity: "Facile", hr: "< 120 bpm", note: "Commencez à marcher un peu plus vite" },
+{ phase: 2, week: "S4", type: "Marche active", duration: "35 min × 4/sem", intensity: "Modéré", hr: "120–130 bpm", note: "Légère côte si possible" },
+{ phase: 2, week: "S5", type: "Marche active", duration: "40 min × 4/sem + longue", intensity: "Modéré", hr: "120–130 bpm", note: "Sortie longue 50 min le week-end" },
+{ phase: 2, week: "S6", type: "Marche rapide", duration: "40 min × 4/sem", intensity: "Modéré–soutenu", hr: "130–140 bpm", note: "Bras actifs, foulée énergique" },
+{ phase: 2, week: "S7", type: "Marche rapide", duration: "45 min × 4/sem", intensity: "Soutenu", hr: "130–140 bpm", note: "Introduire 2–3 × 1 min de trot léger" },
+{ phase: 3, week: "S8", type: "Marche + trot", duration: "40 min × 4/sem", intensity: "Modéré", hr: "130–145 bpm", note: "5 min marche / 1 min trot × 5" },
+{ phase: 3, week: "S9", type: "Marche + trot", duration: "40 min × 4/sem", intensity: "Modéré", hr: "130–145 bpm", note: "4 min marche / 2 min trot × 5" },
+{ phase: 3, week: "S10", type: "Trot progressif", duration: "45 min × 4/sem", intensity: "Modéré–soutenu", hr: "140–150 bpm", note: "3 min marche / 3 min trot" },
+{ phase: 3, week: "S11", type: "Course légère", duration: "45 min × 4/sem", intensity: "Soutenu", hr: "145–155 bpm", note: "2 min marche / 5 min course" },
+{ phase: 3, week: "S12", type: "Course légère", duration: "50 min × 4/sem", intensity: "Soutenu", hr: "145–155 bpm", note: "Course continue 20 min si aucune douleur" },
 ];
 
 const nutritionData = [
-{ meal: “Réveil”, icon: “🌅”, time: “7h00”, color: “#f59e0b”, items: [“1 grand verre d’eau 300ml”, “Eau tiède + jus de citron”] },
-{ meal: “Petit-déjeuner”, icon: “🥣”, time: “7h30”, color: “#10b981”, items: [“Flocons d’avoine + fruits rouges”, “Noix / amandes (magnésium)”, “Thé vert ou café”] },
-{ meal: “Collation matin”, icon: “💧”, time: “10h00”, color: “#06b6d4”, items: [“500ml d’eau”, “Pause active bureau 2 min”] },
-{ meal: “Déjeuner”, icon: “🍽️”, time: “12h30”, color: “#8b5cf6”, items: [“Poisson gras 2×/semaine (saumon, sardines)”, “Légumes verts (épinards, brocoli)”, “Quinoa ou riz complet”, “Huile d’olive vierge extra”] },
-{ meal: “Collation après-midi”, icon: “🥝”, time: “15h30”, color: “#06b6d4”, items: [“500ml d’eau”, “Kiwi ou orange (vitamine C)”, “Pause active bureau”] },
-{ meal: “Dîner”, icon: “🥗”, time: “19h00”, color: “#10b981”, items: [“Protéines maigres (poulet, œufs, légumineuses)”, “Légumes colorés (poivron, tomate)”, “Éviter fritures et sucres raffinés”] },
-{ meal: “Coucher”, icon: “🌙”, time: “21h00”, color: “#6366f1”, items: [“Tisane camomille (magnésium naturel)”, “Dernier verre d’eau 250ml”] },
+{ meal: "Réveil", icon: "🌅", time: "7h00", color: "#f59e0b", items: ["1 grand verre d’eau 300ml", "Eau tiède + jus de citron"] },
+{ meal: "Petit-déjeuner", icon: "🥣", time: "7h30", color: "#10b981", items: ["Flocons d’avoine + fruits rouges", "Noix / amandes (magnésium)", "Thé vert ou café"] },
+{ meal: "Collation matin", icon: "💧", time: "10h00", color: "#06b6d4", items: ["500ml d’eau", "Pause active bureau 2 min"] },
+{ meal: "Déjeuner", icon: "🍽️", time: "12h30", color: "#8b5cf6", items: ["Poisson gras 2×/semaine (saumon, sardines)", "Légumes verts (épinards, brocoli)", "Quinoa ou riz complet", "Huile d’olive vierge extra"] },
+{ meal: "Collation après-midi", icon: "🥝", time: "15h30", color: "#06b6d4", items: ["500ml d’eau", "Kiwi ou orange (vitamine C)", "Pause active bureau"] },
+{ meal: "Dîner", icon: "🥗", time: "19h00", color: "#10b981", items: ["Protéines maigres (poulet, œufs, légumineuses)", "Légumes colorés (poivron, tomate)", "Éviter fritures et sucres raffinés"] },
+{ meal: "Coucher", icon: "🌙", time: "21h00", color: "#6366f1", items: ["Tisane camomille (magnésium naturel)", "Dernier verre d’eau 250ml"] },
 ];
 
 const antiInflamFoods = [
-“🐟 Poissons gras (saumon, sardines, maquereau)”,
-“🫒 Huile d’olive extra vierge”,
-“🫐 Fruits rouges & baies”,
-“🥬 Légumes verts (épinards, brocoli, kale)”,
-“🌰 Noix, amandes, noisettes”,
-“🧄 Ail & curcuma frais”,
-“🍵 Thé vert”,
-“🍫 Chocolat noir > 70%”,
+"🐟 Poissons gras (saumon, sardines, maquereau)",
+"🫒 Huile d’olive extra vierge",
+"🫐 Fruits rouges & baies",
+"🥬 Légumes verts (épinards, brocoli, kale)",
+"🌰 Noix, amandes, noisettes",
+"🧄 Ail & curcuma frais",
+"🍵 Thé vert",
+"🍫 Chocolat noir > 70%",
 ];
 
 const proInflamFoods = [
-“🍟 Fritures & fast-food”,
-“🧁 Sucre raffiné & pâtisseries”,
-“🥩 Charcuteries & viandes transformées”,
-“🥤 Sodas & jus industriels sucrés”,
-“🍺 Alcool en excès”,
-“🧈 Graisses trans & margarines”,
-“🍞 Pain blanc & farines raffinées”,
-“🧂 Sel en excès”,
+"🍟 Fritures & fast-food",
+"🧁 Sucre raffiné & pâtisseries",
+"🥩 Charcuteries & viandes transformées",
+"🥤 Sodas & jus industriels sucrés",
+"🍺 Alcool en excès",
+"🧈 Graisses trans & margarines",
+"🍞 Pain blanc & farines raffinées",
+"🧂 Sel en excès",
 ];
 
 const supplementsData = [
-{ name: “Collagène marin”, dose: “10g / jour”, timing: “Matin à jeun”, why: “Composant structural du disque intervertébral. Stimule la synthèse de cartilage discal.”, icon: “🐟”, priority: 1 },
-{ name: “Magnésium bisglycinate”, dose: “300–400mg / jour”, timing: “Soir au coucher”, why: “Détente musculaire profonde, qualité du sommeil, santé du cartilage. Le plus absorbable.”, icon: “💊”, priority: 1 },
-{ name: “Oméga-3 (EPA/DHA)”, dose: “2–3g / jour”, timing: “Avec le repas”, why: “Anti-inflammatoire naturel puissant. Réduit l’inflammation discale et raideur matinale.”, icon: “🫐”, priority: 1 },
-{ name: “Vitamine D3 + K2”, dose: “2000 UI D3 + 100µg K2”, timing: “Matin avec repas”, why: “Santé osseuse et vertébrale essentielle. K2 oriente le calcium vers les os, pas les artères.”, icon: “☀️”, priority: 2 },
-{ name: “Curcuma + Pipérine”, dose: “500mg × 2 / jour”, timing: “Avec les repas”, why: “Anti-inflammatoire puissant. La pipérine multiplie l’absorption par 20. Réduit douleur discale.”, icon: “🌿”, priority: 2 },
-{ name: “Glucosamine + Chondroïtine”, dose: “1500mg / jour”, timing: “Avec repas”, why: “Soutien direct du cartilage discal. Ralentit la dégénérescence. Effets visibles après 2–3 mois.”, icon: “🦴”, priority: 3 },
-{ name: “Vitamine C”, dose: “500–1000mg / jour”, timing: “Avec le déjeuner”, why: “Cofacteur indispensable à la synthèse du collagène. Antioxydant. Renforce l’effet du collagène marin.”, icon: “🍊”, priority: 3 },
+{ name: "Collagène marin", dose: "10g / jour", timing: "Matin à jeun", why: "Composant structural du disque intervertébral. Stimule la synthèse de cartilage discal.", icon: "🐟", priority: 1 },
+{ name: "Magnésium bisglycinate", dose: "300–400mg / jour", timing: "Soir au coucher", why: "Détente musculaire profonde, qualité du sommeil, santé du cartilage. Le plus absorbable.", icon: "💊", priority: 1 },
+{ name: "Oméga-3 (EPA/DHA)", dose: "2–3g / jour", timing: "Avec le repas", why: "Anti-inflammatoire naturel puissant. Réduit l’inflammation discale et raideur matinale.", icon: "🫐", priority: 1 },
+{ name: "Vitamine D3 + K2", dose: "2000 UI D3 + 100µg K2", timing: "Matin avec repas", why: "Santé osseuse et vertébrale essentielle. K2 oriente le calcium vers les os, pas les artères.", icon: "☀️", priority: 2 },
+{ name: "Curcuma + Pipérine", dose: "500mg × 2 / jour", timing: "Avec les repas", why: "Anti-inflammatoire puissant. La pipérine multiplie l’absorption par 20. Réduit douleur discale.", icon: "🌿", priority: 2 },
+{ name: "Glucosamine + Chondroïtine", dose: "1500mg / jour", timing: "Avec repas", why: "Soutien direct du cartilage discal. Ralentit la dégénérescence. Effets visibles après 2–3 mois.", icon: "🦴", priority: 3 },
+{ name: "Vitamine C", dose: "500–1000mg / jour", timing: "Avec le déjeuner", why: "Cofacteur indispensable à la synthèse du collagène. Antioxydant. Renforce l’effet du collagène marin.", icon: "🍊", priority: 3 },
 ];
 
 const hydrationSchedule = [
-{ time: “Réveil”, amount: 300, icon: “🌅”, note: “Avant tout — corps déshydraté après la nuit” },
-{ time: “9h00”, amount: 300, icon: “💪”, note: “Pendant ou après les exercices” },
-{ time: “11h00”, amount: 300, icon: “💼”, note: “Au bureau” },
-{ time: “13h00”, amount: 300, icon: “🍽️”, note: “Pendant le repas” },
-{ time: “15h30”, amount: 300, icon: “💼”, note: “Bureau — posez une bouteille sur le bureau” },
-{ time: “17h30”, amount: 300, icon: “🚶”, note: “Après le bureau / pendant la marche” },
-{ time: “19h30”, amount: 300, icon: “🥗”, note: “Pendant le dîner” },
-{ time: “21h00”, amount: 200, icon: “🌙”, note: “Avant de dormir” },
+{ time: "Réveil", amount: 300, icon: "🌅", note: "Avant tout — corps déshydraté après la nuit" },
+{ time: "9h00", amount: 300, icon: "💪", note: "Pendant ou après les exercices" },
+{ time: "11h00", amount: 300, icon: "💼", note: "Au bureau" },
+{ time: "13h00", amount: 300, icon: "🍽️", note: "Pendant le repas" },
+{ time: "15h30", amount: 300, icon: "💼", note: "Bureau — posez une bouteille sur le bureau" },
+{ time: "17h30", amount: 300, icon: "🚶", note: "Après le bureau / pendant la marche" },
+{ time: "19h30", amount: 300, icon: "🥗", note: "Pendant le dîner" },
+{ time: "21h00", amount: 200, icon: "🌙", note: "Avant de dormir" },
 ];
 
 const exercises = [
-{ name: “Piriforme droit”, tag: “⭐ PRIORITÉ ABSOLUE”, timing: “Matin + Midi + Soir”, reps: “45 sec × 3 — côté DROIT prioritaire”, color: “#ef4444”, bg: “#fef2f2”, desc: “Sur le dos : croisez la cheville droite sur le genou gauche, ramenez vers vous avec les mains. Insistez nettement plus sur le côté droit — c’est le siège de votre douleur fessière.”, steps: [“Allongez-vous sur le dos, genoux fléchis”, “Croisez la cheville DROITE sur le genou gauche”, “Ramenez le genou gauche vers votre poitrine avec les deux mains”, “Sentez l’étirement profond dans la fesse droite”, “Tenez 45 sec en respirant normalement”] },
-{ name: “Dead Bug”, tag: “⭐ EXERCICE CLÉ”, timing: “Matin + Après bureau”, reps: “5 sec × 8 répétitions”, color: “#06b6d4”, bg: “#ecfeff”, desc: “Sur le dos, 4 membres en l’air. Rentrez le nombril, puis descendez lentement bras droit + jambe gauche sans décoller le bas du dos du sol.”, steps: [“Allongez-vous sur le dos, genoux à 90° en l’air, bras tendus vers le plafond”, “EXPIREZ et rentrez le nombril vers la colonne — tenez cette contraction”, “Descendez lentement le bras DROIT et la jambe GAUCHE vers le sol (5 sec)”, “Ne décollez JAMAIS le bas du dos du sol”, “Revenez, alternez côté”] },
-{ name: “Bird-Dog”, tag: “💪 RENFORCEMENT”, timing: “Matin”, reps: “8–10 répétitions chaque côté”, color: “#f59e0b”, bg: “#fffbeb”, desc: “À 4 pattes, dos parfaitement plat comme une table. Étendez bras droit + jambe gauche simultanément. Tenez 5 secondes. Aucune rotation du bassin.”, steps: [“Mettez-vous à 4 pattes, dos plat (vérifiez avec une règle imaginaire)”, “Activez le transverse : rentrez légèrement le nombril”, “Tendez lentement le BRAS DROIT + JAMBE GAUCHE en même temps”, “Tenez 5 secondes, bassin parfaitement stable”, “Revenez et alternez”] },
-{ name: “Pont fessier”, tag: “💪 RENFORCEMENT”, timing: “Matin + Soir”, reps: “10–15 répétitions”, color: “#8b5cf6”, bg: “#f5f3ff”, desc: “Allongé sur le dos, genoux fléchis. Montez le bassin en contractant les fesses. Descendez vertèbre par vertèbre.”, steps: [“Allongé sur le dos, pieds à plat, genoux fléchis à 90°”, “Contractez les abdominaux profonds avant de monter”, “Soulevez le bassin en serrant fort les fesses”, “Tenez 5 secondes en haut”, “Redescendez vertèbre par vertèbre — lentement”] },
-{ name: “Planche coudes”, tag: “💪 GAINAGE”, timing: “Matin”, reps: “3 × 20 à 60 secondes”, color: “#10b981”, bg: “#ecfdf5”, desc: “Corps en ligne droite parfaite, appui sur avant-bras et orteils. Rentrez le nombril. Ne retenez pas votre souffle.”, steps: [“Appui sur les avant-bras et les orteils”, “Corps en ligne parfaite : ni les fesses trop hautes, ni trop basses”, “Rentrez le nombril vers la colonne”, “Respirez normalement — ne bloquez JAMAIS la respiration”, “Progressez de 20 sec vers 60 sec sur les semaines”] },
-{ name: “Étirement psoas”, tag: “🧘 ÉTIREMENT”, timing: “Soir”, reps: “40 sec × 2 — chaque côté”, color: “#10b981”, bg: “#ecfdf5”, desc: “En fente avant, genou arrière au sol. Poussez le bassin vers l’avant. Le psoas tendu tire en permanence sur vos lombaires.”, steps: [“Mettez-vous en fente avant, genou arrière posé au sol”, “Gardez le dos droit, regard vers l’avant”, “Poussez doucement le bassin vers l’avant”, “Sentez l’étirement à l’avant de la cuisse arrière”, “Tenez 40 secondes, changez de côté”] },
-{ name: “Ischio-jambiers”, tag: “🧘 ÉTIREMENT”, timing: “Soir”, reps: “40 sec × 2 — côté droit prioritaire”, color: “#6366f1”, bg: “#eef2ff”, desc: “Sur le dos, une jambe tendue vers le plafond. Tension douce à l’arrière de la cuisse. Ne forcez pas — les ischio-jambiers tendus aggravent les lombaires.”, steps: [“Allongé sur le dos, une jambe fléchie pied à plat”, “Levez l’autre jambe tendue vers le plafond”, “Tenez avec les deux mains derrière la cuisse”, “Tension douce seulement — ne tirez pas fort”, “Tenez 40 secondes, changez de côté — insistez sur le droit”] },
+{ name: "Piriforme droit", tag: "⭐ PRIORITÉ ABSOLUE", timing: "Matin + Midi + Soir", reps: "45 sec × 3 — côté DROIT prioritaire", color: "#ef4444", bg: "#fef2f2", desc: "Sur le dos : croisez la cheville droite sur le genou gauche, ramenez vers vous avec les mains. Insistez nettement plus sur le côté droit — c’est le siège de votre douleur fessière.", steps: ["Allongez-vous sur le dos, genoux fléchis", "Croisez la cheville DROITE sur le genou gauche", "Ramenez le genou gauche vers votre poitrine avec les deux mains", "Sentez l’étirement profond dans la fesse droite", "Tenez 45 sec en respirant normalement"] },
+{ name: "Dead Bug", tag: "⭐ EXERCICE CLÉ", timing: "Matin + Après bureau", reps: "5 sec × 8 répétitions", color: "#06b6d4", bg: "#ecfeff", desc: "Sur le dos, 4 membres en l’air. Rentrez le nombril, puis descendez lentement bras droit + jambe gauche sans décoller le bas du dos du sol.", steps: ["Allongez-vous sur le dos, genoux à 90° en l’air, bras tendus vers le plafond", "EXPIREZ et rentrez le nombril vers la colonne — tenez cette contraction", "Descendez lentement le bras DROIT et la jambe GAUCHE vers le sol (5 sec)", "Ne décollez JAMAIS le bas du dos du sol", "Revenez, alternez côté"] },
+{ name: "Bird-Dog", tag: "💪 RENFORCEMENT", timing: "Matin", reps: "8–10 répétitions chaque côté", color: "#f59e0b", bg: "#fffbeb", desc: "À 4 pattes, dos parfaitement plat comme une table. Étendez bras droit + jambe gauche simultanément. Tenez 5 secondes. Aucune rotation du bassin.", steps: ["Mettez-vous à 4 pattes, dos plat (vérifiez avec une règle imaginaire)", "Activez le transverse : rentrez légèrement le nombril", "Tendez lentement le BRAS DROIT + JAMBE GAUCHE en même temps", "Tenez 5 secondes, bassin parfaitement stable", "Revenez et alternez"] },
+{ name: "Pont fessier", tag: "💪 RENFORCEMENT", timing: "Matin + Soir", reps: "10–15 répétitions", color: "#8b5cf6", bg: "#f5f3ff", desc: "Allongé sur le dos, genoux fléchis. Montez le bassin en contractant les fesses. Descendez vertèbre par vertèbre.", steps: ["Allongé sur le dos, pieds à plat, genoux fléchis à 90°", "Contractez les abdominaux profonds avant de monter", "Soulevez le bassin en serrant fort les fesses", "Tenez 5 secondes en haut", "Redescendez vertèbre par vertèbre — lentement"] },
+{ name: "Planche coudes", tag: "💪 GAINAGE", timing: "Matin", reps: "3 × 20 à 60 secondes", color: "#10b981", bg: "#ecfdf5", desc: "Corps en ligne droite parfaite, appui sur avant-bras et orteils. Rentrez le nombril. Ne retenez pas votre souffle.", steps: ["Appui sur les avant-bras et les orteils", "Corps en ligne parfaite : ni les fesses trop hautes, ni trop basses", "Rentrez le nombril vers la colonne", "Respirez normalement — ne bloquez JAMAIS la respiration", "Progressez de 20 sec vers 60 sec sur les semaines"] },
+{ name: "Étirement psoas", tag: "🧘 ÉTIREMENT", timing: "Soir", reps: "40 sec × 2 — chaque côté", color: "#10b981", bg: "#ecfdf5", desc: "En fente avant, genou arrière au sol. Poussez le bassin vers l’avant. Le psoas tendu tire en permanence sur vos lombaires.", steps: ["Mettez-vous en fente avant, genou arrière posé au sol", "Gardez le dos droit, regard vers l’avant", "Poussez doucement le bassin vers l’avant", "Sentez l’étirement à l’avant de la cuisse arrière", "Tenez 40 secondes, changez de côté"] },
+{ name: "Ischio-jambiers", tag: "🧘 ÉTIREMENT", timing: "Soir", reps: "40 sec × 2 — côté droit prioritaire", color: "#6366f1", bg: "#eef2ff", desc: "Sur le dos, une jambe tendue vers le plafond. Tension douce à l’arrière de la cuisse. Ne forcez pas — les ischio-jambiers tendus aggravent les lombaires.", steps: ["Allongé sur le dos, une jambe fléchie pied à plat", "Levez l’autre jambe tendue vers le plafond", "Tenez avec les deux mains derrière la cuisse", "Tension douce seulement — ne tirez pas fort", "Tenez 40 secondes, changez de côté — insistez sur le droit"] },
 ];
 
-const phaseColor = { 1: “#06b6d4”, 2: “#f59e0b”, 3: “#10b981” };
+const phaseColor = { 1: "#06b6d4", 2: "#f59e0b", 3: "#10b981" };
 
 // ── COMPONENT ─────────────────────────────────────────────────────────────────
 
 export default function Plan() {
-const [tab, setTab] = useState(“programme”);
+const [tab, setTab] = useState("programme");
 const [phase, setPhase] = useState(1);
 const [openEx, setOpenEx] = useState(null);
 
 const tabs = [
-{ id: “programme”, label: “📅 Programme” },
-{ id: “exercices”, label: “🏋️ Exercices” },
-{ id: “marche”, label: “🚶 Marche & Course” },
-{ id: “nutrition”, label: “🥗 Nutrition” },
-{ id: “supplements”, label: “💊 Compléments” },
-{ id: “hydration”, label: “💧 Hydratation” },
+{ id: "programme", label: "📅 Programme" },
+{ id: "exercices", label: "🏋️ Exercices" },
+{ id: "marche", label: "🚶 Marche & Course" },
+{ id: "nutrition", label: "🥗 Nutrition" },
+{ id: "supplements", label: "💊 Compléments" },
+{ id: "hydration", label: "💧 Hydratation" },
 ];
 
 return (
-<div style={{ fontFamily: “system-ui, sans-serif”, background: “#f1f5f9”, minHeight: “100vh”, color: “#1e293b” }}>
+<div style={{ fontFamily: "system-ui, sans-serif", background: "#f1f5f9", minHeight: "100vh", color: "#1e293b" }}>
 <style>{`* { box-sizing: border-box; margin: 0; padding: 0; } .card { background: white; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); } .btn { cursor: pointer; border: none; font-family: inherit; transition: all 0.18s; } .btn:hover { filter: brightness(1.08); transform: translateY(-1px); } .fade { animation: fadeUp 0.3s ease-out; } @keyframes fadeUp { from { opacity:0; transform:translateY(10px) } to { opacity:1; transform:translateY(0) } } /* Stick figure animations */ @keyframes pirAnim { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(-18deg) translateX(4px)} } @keyframes glowAnim { 0%,100%{opacity:0.15} 50%{opacity:0.55} } @keyframes armDown { 0%,100%{transform:rotate(-8deg)} 50%{transform:rotate(68deg)} } @keyframes legDown { 0%,100%{transform:rotate(8deg)} 50%{transform:rotate(-68deg)} } @keyframes birdArm { 0%,35%,100%{transform:rotate(0deg)} 60%,80%{transform:rotate(-52deg)} } @keyframes birdLeg { 0%,35%,100%{transform:rotate(0deg)} 60%,80%{transform:rotate(48deg)} } @keyframes hipUp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-24px)} } @keyframes arrowUp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} } @keyframes breathe { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(1.05)} } @keyframes lunge { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-5px) rotate(-4deg)} } @keyframes ischRaise { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(-28deg)} } .pir-leg { animation: pirAnim 3s ease-in-out infinite; transform-origin: 75px 74px; } .pir-glow { animation: glowAnim 2s ease-in-out infinite; } .db-arm { animation: armDown 3s ease-in-out infinite; transform-origin: 115px 68px; } .db-leg { animation: legDown 3s ease-in-out infinite; transform-origin: 58px 77px; } .bd-arm { animation: birdArm 3s ease-in-out infinite; transform-origin: 60px 62px; } .bd-leg { animation: birdLeg 3s ease-in-out infinite; transform-origin: 128px 76px; } .hip-body { animation: hipUp 2.5s ease-in-out infinite; transform-origin: 95px 98px; } .hip-arrow { animation: arrowUp 2.5s ease-in-out infinite; } .plank-body { animation: breathe 3s ease-in-out infinite; transform-origin: 128px 123px; } .lunge-torso { animation: lunge 3s ease-in-out infinite; transform-origin: 82px 88px; } .isc-leg { animation: ischRaise 3.5s ease-in-out infinite; transform-origin: 80px 80px; } .core-glow { animation: glowAnim 2.5s ease-in-out infinite; }`}</style>
 
 ```
