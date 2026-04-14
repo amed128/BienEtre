@@ -148,17 +148,7 @@ return (
     </div>
   </div>
 
-  {/* TABS */}
-  <div style={{ background: "white", borderBottom: "2px solid #e2e8f0", display: "flex", overflowX: "auto", padding: "0 8px" }}>
-    {tabs.map(t => (
-      <button key={t.id} className="btn" onClick={() => setTab(t.id)}
-        style={{ padding: "13px 14px", fontSize: "0.8rem", fontWeight: 800, whiteSpace: "nowrap", background: "none", color: tab === t.id ? "#3b82f6" : "#64748b", borderBottom: tab === t.id ? "3px solid #3b82f6" : "3px solid transparent" }}>
-        {t.label}
-      </button>
-    ))}
-  </div>
-
-  <div style={{ maxWidth: "980px", margin: "0 auto", padding: "24px 16px 60px" }}>
+  <div style={{ maxWidth: "980px", margin: "0 auto", padding: "24px 16px 90px" }}>
 
     {/* ════════════════ PROGRAMME ════════════════ */}
     {tab === "programme" && (
@@ -674,6 +664,23 @@ return (
 
   <div style={{ textAlign: "center", padding: "20px", background: "#e2e8f0", color: "#94a3b8", fontSize: "0.76rem", borderTop: "2px solid #cbd5e1" }}>
     Plan personnalisé basé sur votre IRM (Dr Baur) — Discopathie L4-L5 / L5-S1, protrusion paramédiane droite. Consultez votre kinésithérapeute et médecin pour le suivi.
+  </div>
+
+  {/* BOTTOM NAV */}
+  <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, background: "white", borderTop: "2px solid #e2e8f0", display: "flex", justifyContent: "space-around", alignItems: "center", padding: "6px 0 8px", zIndex: 100 }}>
+    {tabs.map(t => {
+      const emoji = t.label.split(" ")[0];
+      const name = t.label.split(" ").slice(1).join(" ").split("&")[0].trim();
+      const active = tab === t.id;
+      return (
+        <button key={t.id} onClick={() => setTab(t.id)}
+          style={{ background: "none", border: "none", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: "2px", padding: "6px 10px", flex: 1 }}>
+          <span style={{ fontSize: "1.4rem", lineHeight: 1 }}>{emoji}</span>
+          <span style={{ fontSize: "0.6rem", fontWeight: 700, color: active ? "#3b82f6" : "#94a3b8", whiteSpace: "nowrap" }}>{name}</span>
+          <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: active ? "#3b82f6" : "transparent", marginTop: "1px" }}></span>
+        </button>
+      );
+    })}
   </div>
 </div>
 
