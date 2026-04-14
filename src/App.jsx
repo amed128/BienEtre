@@ -136,7 +136,7 @@ const tabs = [
 
 return (
 <div style={{ fontFamily: "system-ui, sans-serif", background: "#f1f5f9", minHeight: "100vh", color: "#1e293b" }}>
-<style>{`* { box-sizing: border-box; margin: 0; padding: 0; } .card { background: white; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); } .btn { cursor: pointer; border: none; font-family: inherit; transition: all 0.18s; } .btn:hover { filter: brightness(1.08); transform: translateY(-1px); } .fade { animation: fadeUp 0.3s ease-out; } @keyframes fadeUp { from { opacity:0; transform:translateY(10px) } to { opacity:1; transform:translateY(0) } } /* Stick figure animations */ @keyframes pirAnim { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(-18deg) translateX(4px)} } @keyframes glowAnim { 0%,100%{opacity:0.15} 50%{opacity:0.55} } @keyframes armDown { 0%,100%{transform:rotate(-8deg)} 50%{transform:rotate(68deg)} } @keyframes legDown { 0%,100%{transform:rotate(8deg)} 50%{transform:rotate(-68deg)} } @keyframes birdArm { 0%,35%,100%{transform:rotate(0deg)} 60%,80%{transform:rotate(-52deg)} } @keyframes birdLeg { 0%,35%,100%{transform:rotate(0deg)} 60%,80%{transform:rotate(48deg)} } @keyframes hipUp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-24px)} } @keyframes arrowUp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} } @keyframes breathe { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(1.05)} } @keyframes lunge { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-5px) rotate(-4deg)} } @keyframes ischRaise { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(-28deg)} } .pir-leg { animation: pirAnim 3s ease-in-out infinite; transform-origin: 75px 74px; } .pir-glow { animation: glowAnim 2s ease-in-out infinite; } .db-arm { animation: armDown 3s ease-in-out infinite; transform-origin: 115px 68px; } .db-leg { animation: legDown 3s ease-in-out infinite; transform-origin: 58px 77px; } .bd-arm { animation: birdArm 3s ease-in-out infinite; transform-origin: 60px 62px; } .bd-leg { animation: birdLeg 3s ease-in-out infinite; transform-origin: 128px 76px; } .hip-body { animation: hipUp 2.5s ease-in-out infinite; transform-origin: 95px 98px; } .hip-arrow { animation: arrowUp 2.5s ease-in-out infinite; } .plank-body { animation: breathe 3s ease-in-out infinite; transform-origin: 128px 123px; } .lunge-torso { animation: lunge 3s ease-in-out infinite; transform-origin: 82px 88px; } .isc-leg { animation: ischRaise 3.5s ease-in-out infinite; transform-origin: 80px 80px; } .core-glow { animation: glowAnim 2.5s ease-in-out infinite; }
+<style>{`* { box-sizing: border-box; margin: 0; padding: 0; } .card { background: white; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); } .btn { cursor: pointer; border: none; font-family: inherit; transition: all 0.18s; } .btn:hover { filter: brightness(1.08); transform: translateY(-1px); } .fade { animation: fadeUp 0.3s ease-out; } @keyframes fadeUp { from { opacity:0; transform:translateY(10px) } to { opacity:1; transform:translateY(0) } } /* Stick figure animations */ @keyframes pirAnim { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(-18deg) translateX(4px)} } @keyframes glowAnim { 0%,100%{opacity:0.15} 50%{opacity:0.55} } @keyframes armDown { 0%,100%{transform:rotate(-8deg)} 50%{transform:rotate(68deg)} } @keyframes legDown { 0%,100%{transform:rotate(8deg)} 50%{transform:rotate(-68deg)} } @keyframes birdArm { 0%,35%,100%{transform:rotate(0deg)} 60%,80%{transform:rotate(-52deg)} } @keyframes birdLeg { 0%,35%,100%{transform:rotate(0deg)} 60%,80%{transform:rotate(48deg)} } @keyframes hipUp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-24px)} } @keyframes arrowUp { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} } @keyframes breathe { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(1.05)} } @keyframes lunge { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-5px) rotate(-4deg)} } @keyframes ischRaise { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(-28deg)} } .pir-leg { animation: pirAnim 3s ease-in-out infinite; transform-origin: 75px 74px; } .pir-glow { animation: glowAnim 2s ease-in-out infinite; } .db-arm { animation: armDown 3s ease-in-out infinite; transform-origin: 115px 68px; } .db-leg { animation: legDown 3s ease-in-out infinite; transform-origin: 58px 77px; } .bd-arm { animation: birdArm 3s ease-in-out infinite; transform-origin: 60px 62px; } .bd-leg { animation: birdLeg 3s ease-in-out infinite; transform-origin: 128px 76px; } .hip-body { animation: hipUp 2.5s ease-in-out infinite; transform-origin: 95px 98px; } .hip-arrow { animation: arrowUp 2.5s ease-in-out infinite; } .plank-body { animation: breathe 3s ease-in-out infinite; transform-origin: 128px 123px; } .lunge-torso { animation: lunge 3s ease-in-out infinite; transform-origin: 82px 88px; } .isc-leg { animation: ischRaise 3.5s ease-in-out infinite; transform-origin: 80px 80px; } .core-glow { animation: glowAnim 2.5s ease-in-out infinite; } .card-hover { transition: box-shadow 0.2s, transform 0.2s; } .card-hover:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.13); transform: translateY(-2px); } .card-elevated { box-shadow: 0 4px 16px rgba(0,0,0,0.11) !important; }
 @media (max-width: 600px) {
   .week-card { display: flex !important; flex-wrap: wrap; align-items: flex-start; gap: 8px !important; }
   .week-day { flex-shrink: 0; width: 56px; }
@@ -177,7 +177,7 @@ return (
 
         {phases.filter(p => p.id === phase).map(p => (
           <div key={p.id}>
-            <div className="card" style={{ padding: "18px 22px", marginBottom: "18px", borderLeft: `5px solid ${p.color}`, background: p.bg }}>
+            <div className="card card-elevated" style={{ padding: "18px 22px", marginBottom: "18px", borderLeft: `5px solid ${p.color}`, background: p.bg }}>
               <div style={{ fontWeight: 900, fontSize: "1.05rem", color: p.color, marginBottom: "5px" }}>{p.icon} {p.label} · {p.weeks} — {p.subtitle}</div>
               <div style={{ fontSize: "0.87rem", color: "#475569" }}>🎯 <b>Objectif :</b> {p.goal}</div>
             </div>
@@ -250,7 +250,7 @@ return (
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(290px, 1fr))", gap: "18px" }}>
           {exercises.map((ex, i) => (
-            <div key={i} className="card" style={{ overflow: "hidden", border: `2px solid ${openEx === i ? ex.color : "transparent"}`, cursor: "pointer", transition: "all 0.2s" }}
+            <div key={i} className="card card-hover" style={{ overflow: "hidden", border: `2px solid ${openEx === i ? ex.color : "transparent"}`, cursor: "pointer", transition: "all 0.2s" }}
               onClick={() => setOpenEx(openEx === i ? null : i)}>
               {/* SVG animation */}
               <div style={{ background: ex.bg, padding: "16px", display: "flex", justifyContent: "center" }}>
@@ -384,7 +384,7 @@ return (
                 <div style={{ fontSize: "0.98rem", fontWeight: 900, marginBottom: "5px" }}>{ex.name}</div>
                 <div style={{ fontSize: "0.8rem", color: "#64748b", marginBottom: "10px", lineHeight: 1.45 }}>{ex.desc}</div>
                 <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
-                  <span style={{ background: ex.color + "18", color: ex.color, borderRadius: "50px", padding: "3px 10px", fontSize: "0.78rem", fontWeight: 800 }}>{ex.reps}</span>
+                  <span style={{ background: ex.color + "30", color: ex.color, borderRadius: "50px", padding: "3px 10px", fontSize: "0.78rem", fontWeight: 800 }}>{ex.reps}</span>
                   <span style={{ background: "#f1f5f9", color: "#64748b", borderRadius: "50px", padding: "3px 10px", fontSize: "0.78rem", fontWeight: 700 }}>{ex.timing}</span>
                 </div>
 
@@ -442,7 +442,7 @@ return (
           {walkPlan.map((w, i) => (
             <div key={i} className="card walk-card" style={{ padding: "13px 17px", display: "grid", gridTemplateColumns: "52px 90px 1fr 110px 90px", gap: "10px", alignItems: "center", borderLeft: `4px solid ${phaseColor[w.phase]}` }}>
               <div style={{ fontWeight: 900, color: phaseColor[w.phase], textAlign: "center", fontSize: "0.92rem" }}>{w.week}</div>
-              <div style={{ background: phaseColor[w.phase] + "18", borderRadius: "8px", padding: "4px 8px", textAlign: "center" }}>
+              <div style={{ background: phaseColor[w.phase] + "30", borderRadius: "8px", padding: "4px 8px", textAlign: "center" }}>
                 <div style={{ fontSize: "0.75rem", fontWeight: 800, color: phaseColor[w.phase] }}>{w.type}</div>
               </div>
               <div className="walk-duration">
@@ -479,7 +479,7 @@ return (
     {/* ════════════════ NUTRITION ════════════════ */}
     {tab === "nutrition" && (
       <div className="fade">
-        <div className="card" style={{ padding: "14px 20px", marginBottom: "18px", background: "#f0fdf4", borderLeft: "4px solid #10b981" }}>
+        <div className="card" style={{ padding: "16px 20px", marginBottom: "18px", background: "#f0fdf4", borderLeft: "4px solid #10b981" }}>
           <div style={{ fontWeight: 800, color: "#059669", fontSize: "0.88rem" }}>🥗 Objectif : alimentation anti-inflammatoire, pro-collagène et hydratante. Vos disques sont composés à 80% d'eau et de collagène — ce que vous mangez impacte directement leur récupération.</div>
         </div>
 
@@ -494,7 +494,7 @@ return (
               <div style={{ fontWeight: 900, fontSize: "0.85rem", color: "#1e293b" }}>{meal.meal}</div>
               <div className="meal-items" style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
                 {meal.items.map((item, j) => (
-                  <span key={j} style={{ background: meal.color + "18", color: meal.color, borderRadius: "50px", padding: "3px 11px", fontSize: "0.76rem", fontWeight: 700 }}>✓ {item}</span>
+                  <span key={j} style={{ background: meal.color + "30", color: meal.color, borderRadius: "50px", padding: "3px 11px", fontSize: "0.76rem", fontWeight: 700 }}>✓ {item}</span>
                 ))}
               </div>
             </div>
@@ -544,7 +544,7 @@ return (
     {/* ════════════════ COMPLÉMENTS ════════════════ */}
     {tab === "supplements" && (
       <div className="fade">
-        <div className="card" style={{ padding: "14px 20px", marginBottom: "18px", background: "#fffbeb", borderLeft: "4px solid #f59e0b" }}>
+        <div className="card" style={{ padding: "16px 20px", marginBottom: "18px", background: "#fffbeb", borderLeft: "4px solid #f59e0b" }}>
           <div style={{ fontWeight: 800, color: "#92400e", fontSize: "0.87rem" }}>💊 Consultez votre médecin avant de commencer tout complément. Ce programme est basé sur les données disponibles concernant la santé discale et le cartilage.</div>
         </div>
 
@@ -606,7 +606,7 @@ return (
     {/* ════════════════ HYDRATATION ════════════════ */}
     {tab === "hydration" && (
       <div className="fade">
-        <div className="card" style={{ padding: "14px 20px", marginBottom: "18px", background: "#eff6ff", borderLeft: "4px solid #3b82f6" }}>
+        <div className="card" style={{ padding: "16px 20px", marginBottom: "18px", background: "#eff6ff", borderLeft: "4px solid #3b82f6" }}>
           <div style={{ fontWeight: 800, color: "#1d4ed8", fontSize: "0.88rem" }}>💧 Objectif : 2,3 litres par jour minimum. Le noyau de vos disques intervertébraux est composé à 80% d'eau. La déshydratation accélère directement la dégénérescence discale.</div>
         </div>
 
@@ -641,7 +641,7 @@ return (
             { icon: "🫙", title: "Bouteille au bureau", tip: "Posez 1L d'eau sur votre bureau. Objectif simple : la finir avant 17h.", color: "#06b6d4" },
             { icon: "💦", title: "Jours d'effort", tip: "Ajoutez 300–500ml les jours de marche ou d'exercice. La sudation déshydrate les disques.", color: "#3b82f6" },
           ].map((t, i) => (
-            <div key={i} className="card" style={{ padding: "15px 16px", borderTop: `3px solid ${t.color}` }}>
+            <div key={i} className="card" style={{ padding: "16px 18px", borderTop: `3px solid ${t.color}` }}>
               <div style={{ fontSize: "1.5rem", marginBottom: "5px" }}>{t.icon}</div>
               <div style={{ fontWeight: 900, fontSize: "0.87rem", marginBottom: "5px" }}>{t.title}</div>
               <div style={{ fontSize: "0.78rem", color: "#64748b", lineHeight: 1.45 }}>{t.tip}</div>
